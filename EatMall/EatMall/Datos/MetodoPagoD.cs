@@ -9,13 +9,14 @@ namespace EatMall.Datos
 {
     public class MetodoPagoD
     {
-        public List<MetodoPago> ObtenerMetodos()
+        public List<MetodoPago> ObtenerMetodos(int idLocal)
         {
             List<MetodoPago> lista = new List<MetodoPago>();
             SqlConnection con = ConexionDB.MtAbrirConexion();
 
-            string query = "Select Id, NombreMetodo, Estado From MetodoPago Where Estado = 1";
+            string query = "SELECT Id, NombreMetodo, Estado FROM MetodoPago WHERE Estado = 1 AND IdLocal = @idLocal";
             SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@idLocal", idLocal);
 
             con.Open();
             SqlDataReader reader = cmd.ExecuteReader();

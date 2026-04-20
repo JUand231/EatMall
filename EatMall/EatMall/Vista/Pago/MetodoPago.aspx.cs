@@ -11,14 +11,24 @@ namespace EatMall.Vista.Pago
         {
             if (!IsPostBack)
             {
-                rptMetodos.DataSource = metodo.ObtenerMetodos();
+                int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
+                rptMetodos.DataSource = metodo.ObtenerMetodos(idLocal);
                 rptMetodos.DataBind();
             }
         }
 
         protected void btnContinuar_Click(object sender, EventArgs e)
         {
-            string metodoSeleccionado = Request.Form["metodoPago"];
+            // Buscar el radio seleccionado aunque ASP.NET le haya cambiado el name
+            string metodoSeleccionado = null;
+            foreach (string key in Request.Form.Keys)
+            {
+                if (key.Contains("metodoPago"))
+                {
+                    metodoSeleccionado = Request.Form[key];
+                    break;
+                }
+            }
 
             if (string.IsNullOrEmpty(metodoSeleccionado))
             {
@@ -30,6 +40,5 @@ namespace EatMall.Vista.Pago
             Session["MetodoPago"] = metodoSeleccionado;
             Response.Redirect("~/Vista/Pago/ConfirmacionPago.aspx");
         }
-
     }
 }

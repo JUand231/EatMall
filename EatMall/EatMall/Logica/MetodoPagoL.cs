@@ -9,12 +9,10 @@ namespace EatMall.Logica
 {
     public class MetodoPagoL
     {
-        private LoginD datos = new LoginD();
-
-        public List<MetodoPago> ObtenerMetodos()
+        public List<MetodoPago> ObtenerMetodos(int idLocal)
         {
-            return datos.ObtenerMetodos();
+            MetodoPagoD datos = new MetodoPagoD();
+            return datos.ObtenerMetodos(idLocal);
         }
-
     }
 }
