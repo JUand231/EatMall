@@ -1,5 +1,4 @@
 ﻿using EatMall.Modelo;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -7,35 +6,33 @@ namespace EatMall.Datos
 {
     public class ProductoD
     {
-        public List<Producto> ObtenerProductos()
+        public List<Producto> ObtenerProductos(int idLocal)
         {
             List<Producto> lista = new List<Producto>();
-            string consulta = @"SELECT Producto.*, CategoriaProducto.Nombre AS Categoria, 
-                                Local.Nombre AS NombreLocal
-                                FROM Producto
-                                INNER JOIN CategoriaProducto ON Producto.IdCategoria = CategoriaProducto.Id
-                                INNER JOIN Local ON Producto.IdLocal = Local.Id
-                                WHERE Producto.Estado = 1";
+            string consulta = @"SELECT P.Id, P.Nombre, P.Descripcion, P.Imagen, P.Precio, P.Estado, L.Id AS IdLocal
+                                FROM Producto P
+                                JOIN Local L ON L.Id = P.IdLocal
+                                WHERE P.IdLocal = @idLocal";
 
-            using (SqlConnection cn = ConexionDB.MtAbrirConexion())
+            using (SqlConnection connection = ConexionDB.MtAbrirConexion())
             {
-                cn.Open();
-                using (SqlCommand cmd = new SqlCommand(consulta, cn))
+                SqlCommand command = new SqlCommand(consulta, connection);
+                command.Parameters.AddWithValue("@idLocal", idLocal);
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    while (reader.Read())
                     {
-                        while (dr.Read())
+                        lista.Add(new Producto
                         {
-                            lista.Add(new Producto()
-                            {
-                                Id = Convert.ToInt32(dr["Id"]),
-                                Nombre = dr["Nombre"].ToString(),
-                                Descripcion = dr["Descripcion"].ToString(),
-                                Imagen = dr["Imagen"].ToString(),
-                                Precio = Convert.ToDecimal(dr["Precio"]),
-                                
-                            });
-                        }
+                            Id = reader.GetInt32(0),
+                            Nombre = reader.GetString(1),
+                            Descripcion = reader.IsDBNull(2) ? "" : reader.GetString(2),
+                            Imagen = reader.IsDBNull(3) ? "" : reader.GetString(3),
+                            Precio = reader.GetDecimal(4),
+                            Estado = reader.GetBoolean(5) ? "Activo" : "Inactivo",
+                            Local = new Local { Id = reader.GetInt32(6) }
+                        });
                     }
                 }
             }

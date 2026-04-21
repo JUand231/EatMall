@@ -1,9 +1,6 @@
 ﻿using EatMall.Logica;
 using EatMall.Modelo;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -18,8 +15,8 @@ namespace EatMall.Vista
         {
             if (!IsPostBack)
             {
-                if (Session["IdCliente"] == null)
-                    Response.Redirect("~/Vista/Auth/Login.aspx");
+                if (!string.IsNullOrEmpty(Request.QueryString["idLocal"]))
+                    Session["IdLocal"] = Convert.ToInt32(Request.QueryString["idLocal"]);
 
                 carritoL.LimpiarSiNoHuboMovimiento();
                 CargarProductos();
@@ -29,7 +26,8 @@ namespace EatMall.Vista
 
         private void CargarProductos()
         {
-            rptProductos.DataSource = productoL.ObtenerProductos();
+            int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
+            rptProductos.DataSource = productoL.ObtenerProductos(idLocal);
             rptProductos.DataBind();
         }
 
@@ -45,16 +43,16 @@ namespace EatMall.Vista
             if (e.CommandName == "AgregarCarrito")
             {
                 int id = Convert.ToInt32(e.CommandArgument);
+                int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
 
-                // Leer cantidad del TextBox dentro del item
                 TextBox txtCantidad = (TextBox)e.Item.FindControl("txtCantidad");
                 int cantidad = 1;
                 if (txtCantidad != null && int.TryParse(txtCantidad.Text, out int cant) && cant > 0)
                     cantidad = cant;
 
-                Producto producto = productoL.ObtenerProductos().Find(p => p.Id == id);
+                Producto producto = productoL.ObtenerProductos(idLocal).Find(p => p.Id == id);
                 if (producto != null)
-                carritoL.AgregarProducto(producto, cantidad);
+                    carritoL.AgregarProducto(producto, cantidad);
 
                 Response.Redirect(Request.Url.AbsolutePath);
             }
@@ -69,13 +67,18 @@ namespace EatMall.Vista
                 Response.Redirect(Request.Url.AbsolutePath);
             }
         }
+
         protected void btnIrConfirmar_Click(object sender, EventArgs e)
         {
             if (carritoL.ObtenerCarrito().Count == 0)
+                return;
+
+            if (Session["IdCliente"] == null)
             {
-                // No hacer nada si el carrito está vacío
+                Response.Redirect("~/Vista/Auth/Login.aspx");
                 return;
             }
+
             Session["CarritoModificado"] = true;
             Response.Redirect("~/Vista/ConfirmarPedido.aspx");
         }

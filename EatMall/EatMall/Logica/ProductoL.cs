@@ -1,16 +1,15 @@
 ﻿using EatMall.Datos;
 using EatMall.Modelo;
-using System;
 using System.Collections.Generic;
 
 namespace EatMall.Logica
 {
     public class ProductoL
     {
-        public List<Producto> ObtenerProductos()
+        public List<Producto> ObtenerProductos(int idLocal)
         {
             ProductoD datos = new ProductoD();
-            return datos.ObtenerProductos();
+            return datos.ObtenerProductos(idLocal);
         }
     }
 }
