@@ -43,9 +43,9 @@
             width: 100%;
         }
 
-        .card img {
-            border-radius: 10px;
-        }
+            .card img {
+                border-radius: 10px;
+            }
 
         .card-body h5 {
             font-size: 16px;
@@ -64,89 +64,101 @@
             font-weight: 500;
         }
 
-        .btn-custom:hover {
-            opacity: 0.9;
-        }
+            .btn-custom:hover {
+                opacity: 0.9;
+            }
     </style>
 </head>
 
 <body>
-<form id="form1" runat="server">
+    <form id="form1" runat="server">
 
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">EatMall</a>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="container d-flex align-items-center gap-3">
 
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item ms-4">
-                    <a class="nav-link d-flex align-items-center" href="Vista/Auth/Login.aspx">
-                        <i class="bi bi-person-circle me-2"></i>Login
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+                <a class="navbar-brand fw-bold" href="#">EatMall</a>
 
-    <!-- CONTENIDO -->
-    <div class="container mt-4">
+                <div class="input-group w-auto flex-grow-1">
+                    <asp:TextBox ID="txtBusqueda" runat="server"
+                        CssClass="form-control"
+                        placeholder="Buscar locales o productos...">
+                    </asp:TextBox>
+                    <asp:Button ID="btnBuscar" runat="server"
+                        Text="Buscar"
+                        CssClass="btn btn-primary"
+                        OnClick="btnBuscar_Click"
+                        UseSubmitBehavior="true" />
+                </div>
 
-        <!-- HERO -->
-        <div class="hero-image mb-5">
-            <div class="hero-text">
-                <h1>EatMall</h1>
-                <p>Administra locales, controla ocupación y optimiza el servicio en tiempo real</p>
-                <button class="btn btn-light btn-lg px-4 py-2">Explorar ahora</button>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="Vista/Auth/Login.aspx">
+                            <i class="bi bi-person-circle me-2"></i>Login
+                        </a>
+                    </li>
+                </ul>
+
             </div>
-        </div>
+        </nav>
+        <!-- CONTENIDO -->
+        <div class="container mt-4">
 
-        <!-- TITULO -->
-        <h4 class="mb-4">Centros Comerciales</h4>
+            <!-- HERO -->
+            <div class="hero-image mb-5" aria-sort="none">
+                <div class="hero-text">
+                    <h1>EatMall</h1>
+                    <p>Administra locales, controla ocupación y optimiza el servicio en tiempo real</p>
+                    <button class="btn btn-light btn-lg px-4 py-2">Explorar ahora</button>
+                </div>
+            </div>
 
-        <!-- LISTADO -->
-        <div class="row">
-            <asp:Repeater ID="rptCentrosComerciales" runat="server">
-                <ItemTemplate>
+            <!-- TITULO -->
+            <h4 class="mb-4">Centros Comerciales</h4>
 
-                    <!-- 🔥 4 POR FILA -->
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="card shadow-sm p-3 h-100 position-relative">
+            <!-- LISTADO -->
+            <div class="row">
+                <asp:Repeater ID="rptCentrosComerciales" runat="server">
+                    <ItemTemplate>
 
-                            <!-- IMAGEN -->
-                            <img src='<%# Eval("Imagen") %>'
-                                 class="card-img-top"
-                                 style="height:150px; object-fit:cover;"
-                                 onerror="this.src='Vista/Assets/Img/CCDefault.png'" />
+                        <!-- 🔥 4 POR FILA -->
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card shadow-sm p-3 h-100 position-relative">
 
-                            <!-- CONTENIDO -->
-                            <div class="card-body text-start">
+                                <!-- IMAGEN -->
+                                <img src='<%# Eval("Imagen") %>'
+                                    class="card-img-top"
+                                    style="height: 150px; object-fit: cover;"
+                                    onerror="this.src='Vista/Assets/Img/CCDefault.png'" />
 
-                                <h5 class="fw-bold"><%# Eval("Nombre") %></h5>
+                                <!-- CONTENIDO -->
+                                <div class="card-body text-start">
 
-                                <p class="text-muted mb-1">
-                                    <i class="bi bi-geo-alt-fill"></i>
-                                    <%# Eval("Ciudad.NombreCiudad") %> - 
+                                    <h5 class="fw-bold"><%# Eval("Nombre") %></h5>
+
+                                    <p class="text-muted mb-1">
+                                        <i class="bi bi-geo-alt-fill"></i>
+                                        <%# Eval("Ciudad.NombreCiudad") %> - 
                                     <%# Eval("Ciudad.Departamento.Nombre") %>
-                                </p>
+                                    </p>
 
-                                <p class="small text-secondary">
-                                    <%# Eval("Ubicacion") %>
-                                </p>
+                                    <p class="small text-secondary">
+                                        <%# Eval("Ubicacion") %>
+                                    </p>
 
-                                <a href='Vista/Plazoleta/Plazoleta.aspx?id=<%# Eval("Id") %>' class="btn btn-custom w-100 mt-2">
-                                    Ver Detalles
-                                </a>
+                                    <a href='Vista/Plazoleta/Plazoleta.aspx?id=<%# Eval("Id") %>' class="btn btn-custom w-100 mt-2">Ver Detalles
+                                    </a>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                </ItemTemplate>
-            </asp:Repeater>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
+
         </div>
 
-    </div>
-
-</form>
+    </form>
 </body>
 </html>

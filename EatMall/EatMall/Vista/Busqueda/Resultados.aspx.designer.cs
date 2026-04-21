@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace EatMall
+namespace EatMall.Vista.Busqueda
 {
 
 
-    public partial class Index
+    public partial class Resultados
     {
 
         /// <summary>
@@ -24,30 +24,30 @@ namespace EatMall
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control txtBusqueda.
+        /// Control rptLocales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBusqueda;
+        protected global::System.Web.UI.WebControls.Repeater rptLocales;
 
         /// <summary>
-        /// Control btnBuscar.
+        /// Control rptProductos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
+        protected global::System.Web.UI.WebControls.Repeater rptProductos;
 
         /// <summary>
-        /// Control rptCentrosComerciales.
+        /// Control rptCentros.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptCentrosComerciales;
+        protected global::System.Web.UI.WebControls.Repeater rptCentros;
     }
 }

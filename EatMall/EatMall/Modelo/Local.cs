@@ -15,5 +15,6 @@ namespace EatMall.Modelo
         public string Imagen { get; set; }
         public string Estado { get; set; }
         public Plazoleta Plazoleta { get; set; }
+        public CentroComercial CentroComercial { get; set; }
     }
 }

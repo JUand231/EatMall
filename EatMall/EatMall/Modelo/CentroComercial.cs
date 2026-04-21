@@ -16,6 +16,7 @@ namespace EatMall.Modelo
         public int IdCiudad { get; set; }
         public int idAdminCC { get; set; }
         public string Ubicacion { get; set; }
+        public string Direccion { get; set; }
         public Ciudad Ciudad { get; set; }
     }
 }
