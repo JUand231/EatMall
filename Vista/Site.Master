@@ -1,0 +1,33 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="EatMall.Site" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>EatMall</title>
+    <asp:ContentPlaceHolder ID="head" runat="server"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<form id="form1" runat="server">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">EatMall</a>
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item me-3">
+                    <span>🛒 Carrito: 
+                        <span class="badge bg-danger">
+                            <asp:Label ID="lblCantidadCarrito" runat="server" Text="0"/>
+                        </span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"/>
+
+</form>
+</body>
+</html>

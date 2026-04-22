@@ -26,7 +26,8 @@
                     <ItemTemplate>
                         <div class="card d-inline-block m-2" style="width: 200px; vertical-align: top; min-height: 320px;">
                             <div class="card-body d-flex flex-column" style="min-height: 280px;">
-                                <img src='<%# ResolveUrl("~/") + Eval("Imagen") %>'
+                                <img src=<%# Eval("Imagen").ToString().StartsWith("http") ? Eval("Imagen").ToString() : ResolveUrl("~/" + Eval("Imagen").ToString()) %>
+
                                     alt='<%# Eval("Nombre") %>'
                                     style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 8px;"
                                     onerror="this.style.display='none'" />
@@ -41,6 +42,7 @@
                                         CssClass="btn btn-primary btn-sm"
                                         CommandName="AgregarCarrito"
                                         CommandArgument='<%# Eval("Id") %>' />
+      
                                 </div>
                             </div>
                         </div>
