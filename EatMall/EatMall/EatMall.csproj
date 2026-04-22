@@ -142,10 +142,12 @@
     <Content Include="Vista\Pago\Recibo.aspx" />
     <Content Include="Vista\Plazoleta\Plazoleta.aspx" />
     <Content Include="Vista\Tienda.aspx" />
+    <Content Include="Vista\Usuario\Perfil.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\CentroComercialD.cs" />
+    <Compile Include="Datos\ClienteD.cs" />
     <Compile Include="Datos\ConexionDB.cs" />
     <Compile Include="Datos\LocalD.cs" />
     <Compile Include="Datos\LoginD.cs" />
@@ -163,6 +165,7 @@
     </Compile>
     <Compile Include="Logica\CarritoL.cs" />
     <Compile Include="Logica\CentroComercialL.cs" />
+    <Compile Include="Logica\ClienteL.cs" />
     <Compile Include="Logica\LocalL.cs" />
     <Compile Include="Logica\LoginL.cs" />
     <Compile Include="Logica\MetodoPagoL.cs" />
@@ -247,6 +250,13 @@
     </Compile>
     <Compile Include="Vista\Tienda.aspx.designer.cs">
       <DependentUpon>Tienda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Usuario\Perfil.aspx.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Usuario\Perfil.aspx.designer.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
