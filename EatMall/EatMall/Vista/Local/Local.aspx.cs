@@ -1,4 +1,4 @@
-﻿ using EatMall.Logica;
+﻿using EatMall.Logica;
 using EatMall.Modelo;
 using System;
 using System.Collections.Generic;
@@ -14,13 +14,21 @@ namespace EatMall.Vista.Pago
         {
             if (!IsPostBack)
             {
+                // BOTÓN VOLVER → PLAZOLETA
+                string idPlazoleta = Request.QueryString["idPlazoleta"];
+
+                btnVolverPlazoleta.NavigateUrl =
+                    "~/Vista/Plazoleta/Plazoleta.aspx?id=" + idPlazoleta;
+
                 CargarLocales();
             }
         }
 
         private void CargarLocales()
         {
-            int idPlazoleta = Convert.ToInt32(Request.QueryString["idPlazoleta"]);
+            int idPlazoleta = 0;
+
+            int.TryParse(Request.QueryString["idPlazoleta"], out idPlazoleta);
 
             List<Modelo.Local> lista = localL.MtListarLocales(idPlazoleta);
 

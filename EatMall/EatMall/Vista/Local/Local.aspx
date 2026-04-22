@@ -6,7 +6,10 @@
     <title>Locales</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-        body { background-color: #f0f2f5; font-family: 'Segoe UI', sans-serif; }
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', sans-serif;
+        }
 
         .local-icono {
             width: 80px;
@@ -36,7 +39,9 @@
             text-align: center;
         }
 
-        .local-card:hover { transform: translateY(-4px); }
+            .local-card:hover {
+                transform: translateY(-4px);
+            }
 
         .local-nombre {
             font-size: 0.85rem;
@@ -45,30 +50,29 @@
             margin-top: 8px;
             word-break: break-word;
         }
-
-        .header-locales {
-            background: linear-gradient(135deg, #0d6efd, #6610f2);
-            color: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
+
         <div class="container py-5">
 
-            <div class="header-locales text-center">
-                <h2 class="fw-bold mb-0">Locales</h2>
-                <p class="mb-0 opacity-75">Selecciona un local</p>
+            <div class="d-flex align-items-center mb-4">
+
+                <asp:HyperLink ID="btnVolverPlazoleta"
+                    runat="server"
+                    Text="← Volver"
+                    CssClass="btn btn-outline-dark btn-sm me-3" />
+
+                <h4 class="mb-0">Locales</h4>
+
             </div>
 
             <div class="row row-cols-3 row-cols-sm-4 row-cols-md-6 g-4">
                 <asp:Repeater ID="rptLocales" runat="server">
                     <ItemTemplate>
                         <div class="col">
-                            <div class="local-card" onclick="window.location='/Vista/Tienda.aspx?idLocal=<%# Eval("Id") %>'">
+                            <div class="local-card" onclick="window.location='/Vista/Tienda.aspx?idLocal=<%# Eval("Id") %>&idPlazoleta=<%= Request.QueryString["idPlazoleta"] %>'">
                                 <asp:Image ID="imgLocal" runat="server"
                                     ImageUrl='<%# string.IsNullOrEmpty(Eval("Imagen").ToString()) ? "~/img/default-local.png" : Eval("Imagen").ToString() %>'
                                     CssClass="local-icono"

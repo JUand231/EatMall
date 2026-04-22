@@ -25,10 +25,16 @@
 
         <div class="container mt-4">
 
-            <!-- BOTÓN VOLVER -->
-            <a href="../../Index.aspx" class="btn btn-secondary mb-3">← Volver</a>
+            <div class="d-flex align-items-center mb-4">
 
-            <h4 class="mb-4">Plazoletas</h4>
+                <asp:HyperLink ID="btnVolverIndex"
+                    runat="server"
+                    Text="← Volver"
+                    CssClass="btn btn-outline-dark btn-sm me-3" />
+
+                <h4 class="mb-0">Plazoletas</h4>
+
+            </div>
 
             <div class="row">
                 <asp:Repeater ID="rptPlazoletas" runat="server">

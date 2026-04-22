@@ -11,7 +11,16 @@
 
             <!-- COLUMNA PRODUCTOS -->
             <div class="col-md-8">
-                <h4>Productos</h4>
+                <div class="d-flex align-items-center mb-3">
+
+                    <asp:HyperLink ID="btnVolverLocal"
+                        runat="server"
+                        Text="← Volver"
+                        CssClass="btn btn-outline-dark btn-sm me-3" />
+
+                    <h4 class="mb-0">Productos</h4>
+
+                </div>
                 <asp:Repeater ID="rptProductos" runat="server"
                     OnItemCommand="rptProductos_ItemCommand">
                     <ItemTemplate>
