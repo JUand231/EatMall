@@ -12,30 +12,28 @@ namespace EatMall.Vista.Pago
         {
             if (!IsPostBack)
             {
-                string metodo = Session["MetodoPago"]?.ToString();
-
-                switch (metodo)
+                if (Session["MetodoPago"] == null)
                 {
-                    case "1":
-                        lblMetodo.Text = "Nequi";
-                        imgMetodo.ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Nequi_logo.svg/1200px-Nequi_logo.svg.png";
-                        break;
-                    case "2":
-                        lblMetodo.Text = "Daviplata";
-                        imgMetodo.ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Daviplata_logo.svg/1200px-Daviplata_logo.svg.png";
-                        break;
-                    case "3":
-                        lblMetodo.Text = "PSE";
-                        imgMetodo.ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/PSE_logo.svg/1200px-PSE_logo.svg.png";
-                        break;
-                    default:
-                        Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
-                        break;
+                    Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
+                    return;
                 }
 
-                // Por ahora ponemos un total de prueba
-                // Cuando tengas el carrito esto vendrá de Session["Total"]
-                lblTotal.Text = "$50.000";
+                int idMetodo = Convert.ToInt32(Session["MetodoPago"]);
+                int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
+
+                MetodoPagoL metodoL = new MetodoPagoL();
+                var metodos = metodoL.ObtenerMetodos(idLocal);
+                var metodoSeleccionado = metodos.Find(m => m.Id == idMetodo);
+
+                if (metodoSeleccionado != null)
+                {
+                    lblMetodo.Text = metodoSeleccionado.NombreMetodo;
+                    Session["NombreMetodoPago"] = metodoSeleccionado.NombreMetodo;
+                }
+                else
+                    Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
+
+                lblTotal.Text = Session["Total"] != null ? "$" + Session["Total"].ToString() : "$0";
             }
         }
 
@@ -49,13 +47,9 @@ namespace EatMall.Vista.Pago
                 FechaTransaccion = DateTime.Now
             };
 
-            // Por ahora usamos IdPedido de prueba
-            // Cuando tengas el carrito esto vendrá de Session["IdPedido"]
             int idPedido = 1;
-
             int idTransaccion = logica.ProcesarPago(oTransaccion, idPedido);
             Session["IdTransaccion"] = idTransaccion;
-
             Response.Redirect("~/Vista/Pago/Recibo.aspx");
         }
 

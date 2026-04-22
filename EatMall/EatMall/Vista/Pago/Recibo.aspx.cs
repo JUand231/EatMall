@@ -10,22 +10,15 @@ namespace EatMall.Vista.Pago
             {
                 if (Session["IdTransaccion"] == null)
                 {
-                    Response.Redirect("~/Vista/Pago/MetodosPago.aspx");
+                    Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
                     return;
                 }
 
                 lblIdTransaccion.Text = "#" + Session["IdTransaccion"].ToString();
                 lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
                 lblEstado.Text = "Aprobado";
-                lblTotal.Text = "$50.000";
-
-                string metodo = Session["MetodoPago"]?.ToString();
-                switch (metodo)
-                {
-                    case "1": lblMetodo.Text = "Nequi"; break;
-                    case "2": lblMetodo.Text = "Daviplata"; break;
-                    case "3": lblMetodo.Text = "PSE"; break;
-                }
+                lblTotal.Text = "$" + (Session["Total"] != null ? Session["Total"].ToString() : "0");
+                lblMetodo.Text = Session["NombreMetodoPago"] != null ? Session["NombreMetodoPago"].ToString() : "";
             }
         }
 

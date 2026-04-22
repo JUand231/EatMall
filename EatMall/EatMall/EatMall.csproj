@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -60,11 +63,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\EatMall.dll" />
@@ -110,24 +108,6 @@
     <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
-    <Content Include="img\alfredo.jpg" />
-    <Content Include="img\cazuela.jpg" />
-    <Content Include="img\ceviche.jpg" />
-    <Content Include="img\churrasco.jpg" />
-    <Content Include="img\croissant.jpg" />
-    <Content Include="img\gaseosa.jpg" />
-    <Content Include="img\hambdoble.jpg" />
-    <Content Include="img\hambsencilla.jpg" />
-    <Content Include="img\jugo.jpg" />
-    <Content Include="img\limonada.jpg" />
-    <Content Include="img\margarita.jpg" />
-    <Content Include="img\mediopollo.jpg" />
-    <Content Include="img\panintegral.jpg" />
-    <Content Include="img\patacones.jpg" />
-    <Content Include="img\pepperoni.jpg" />
-    <Content Include="img\perro.jpg" />
-    <Content Include="img\pollero.jpg" />
-    <Content Include="img\torta.jpg" />
     <Content Include="Index.aspx" />
     <Content Include="obj\Debug\EatMall.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\EatMall.dll" />
@@ -135,6 +115,7 @@
     <Content Include="Vista\Assets\Img\CCDefault.png" />
     <Content Include="Vista\Assets\Img\HeroPlazoleta.png" />
     <Content Include="Vista\Auth\Login.aspx" />
+    <Content Include="Vista\Busqueda\Resultados.aspx" />
     <Content Include="Vista\ConfirmarPedido.aspx" />
     <Content Include="Vista\Local\Local.aspx" />
     <Content Include="Vista\Pago\ConfirmacionPago.aspx" />
@@ -146,6 +127,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\BusquedaD.cs" />
     <Compile Include="Datos\CentroComercialD.cs" />
     <Compile Include="Datos\ClienteD.cs" />
     <Compile Include="Datos\ConexionDB.cs" />
@@ -163,6 +145,7 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Logica\BusquedaL.cs" />
     <Compile Include="Logica\CarritoL.cs" />
     <Compile Include="Logica\CentroComercialL.cs" />
     <Compile Include="Logica\ClienteL.cs" />
@@ -194,6 +177,13 @@
     </Compile>
     <Compile Include="Vista\Auth\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Busqueda\Resultados.aspx.cs">
+      <DependentUpon>Resultados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Busqueda\Resultados.aspx.designer.cs">
+      <DependentUpon>Resultados.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\ConfirmarPedido.aspx.cs">
       <DependentUpon>ConfirmarPedido.aspx</DependentUpon>
@@ -276,8 +266,8 @@
     <Content Include="obj\Debug\EatMall.csproj.AssemblyReference.cache" />
     <Content Include="obj\Debug\EatMall.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\EatMall.csproj.Up2Date" />
-    <None Include="packages.config" />
     <Content Include="Vista\Site.Master" />
+    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
