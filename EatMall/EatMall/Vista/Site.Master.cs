@@ -1,5 +1,6 @@
 ﻿using EatMall.Logica;
 using System;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace EatMall.Vista
@@ -21,6 +22,19 @@ namespace EatMall.Vista
             {
                 pnlLogin.Visible = true;
                 pnlPerfil.Visible = false;
+            }
+        }
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtBusqueda.Text.Trim()))
+            {
+                // Redirige a la página de resultados pasando el término como querystring
+                Response.Redirect("Vista/Busqueda/Resultados.aspx?q=" + Server.UrlEncode(txtBusqueda.Text.Trim()));
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "warning",
+                    "Swal.fire({ icon: 'warning', title: 'Advertencia', text: 'Ingrese un término de búsqueda.' });", true);
             }
         }
 

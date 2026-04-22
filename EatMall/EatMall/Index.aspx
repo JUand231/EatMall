@@ -37,15 +37,7 @@
 <div class="container mt-4">
 
     <!-- BUSCADOR -->
-    <div class="input-group mb-4">
-        <asp:TextBox ID="txtBusqueda" runat="server"
-            CssClass="form-control"
-            placeholder="Buscar locales o productos..."/>
-        <asp:Button ID="btnBuscar" runat="server"
-            Text="Buscar"
-            CssClass="btn btn-primary"
-            OnClick="btnBuscar_Click"/>
-    </div>
+   
 
     <!-- CAROUSEL -->
     <div id="carouselEatMall" class="carousel slide mb-5 shadow-lg" data-bs-ride="carousel" style="border-radius:15px; overflow:hidden;">
