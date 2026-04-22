@@ -31,23 +31,20 @@ namespace EatMall.Vista
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Vista/Pago/MetodoPago.aspx", false);
             int idCliente = Convert.ToInt32(Session["IdCliente"]);
             List<Carrito> carrito = carritoL.ObtenerCarrito();
 
-            
-            Pedido pedido = pedidoL.ConfirmarPedido(carrito, idCliente);
+            // Guardar el total en Session antes de redirigir
+            decimal total = carritoL.ObtenerTotal();
+            Session["Total"] = total.ToString("N2");
 
-            // Limpiar carrito después de confirmar
+            Pedido pedido = pedidoL.ConfirmarPedido(carrito, idCliente);
+            Session["CodigoPedido"] = pedido.CodigoPedido;
+
             Session["Carrito"] = new List<Carrito>();
             Session["CarritoModificado"] = false;
 
-            lblMensaje.Text = "✅ Pedido confirmado con éxito. Código: " + pedido.CodigoPedido;
-            lblMensaje.CssClass = "mt-3 d-block alert alert-success";
-
-            btnConfirmar.Enabled = false;
-            btnCancelar.Enabled = false;
-            
+            Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

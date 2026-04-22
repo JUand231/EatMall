@@ -1,4 +1,5 @@
 ﻿using EatMall.Logica;
+using EatMall.Modelo;
 using System;
 
 namespace EatMall.Vista.Pago
@@ -19,16 +20,7 @@ namespace EatMall.Vista.Pago
 
         protected void btnContinuar_Click(object sender, EventArgs e)
         {
-            // Buscar el radio seleccionado aunque ASP.NET le haya cambiado el name
-            string metodoSeleccionado = null;
-            foreach (string key in Request.Form.Keys)
-            {
-                if (key.Contains("metodoPago"))
-                {
-                    metodoSeleccionado = Request.Form[key];
-                    break;
-                }
-            }
+            string metodoSeleccionado = hfMetodoPago.Value;
 
             if (string.IsNullOrEmpty(metodoSeleccionado))
             {
