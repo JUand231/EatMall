@@ -12,11 +12,13 @@ namespace EatMall.Vista
         {
             if (!IsPostBack)
             {
+                btnVolverIndex.NavigateUrl = "~/Index.aspx";
+
                 int idCC = 0;
 
                 if (Request.QueryString["id"] != null)
                 {
-                    idCC = Convert.ToInt32(Request.QueryString["id"]);
+                    int.TryParse(Request.QueryString["id"], out idCC);
                 }
 
                 PlazoletaL logica = new PlazoletaL();
@@ -30,6 +32,7 @@ namespace EatMall.Vista
                 }
             }
         }
+
         protected void btnSeleccionar_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
