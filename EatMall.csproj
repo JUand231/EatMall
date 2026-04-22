@@ -108,6 +108,19 @@
     <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
     <Content Include="bin\roslyn\vbc.exe" />
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="EatMall\EatMall.slnx" />
+    <Content Include="EatMall\EatMall\Index.aspx" />
+    <Content Include="EatMall\EatMall\Vista\Assets\Img\CCDefault.png" />
+    <Content Include="EatMall\EatMall\Vista\Assets\Img\HeroPlazoleta.png" />
+    <Content Include="EatMall\EatMall\Vista\Auth\Login.aspx" />
+    <Content Include="EatMall\EatMall\Vista\Busqueda\Resultados.aspx" />
+    <Content Include="EatMall\EatMall\Vista\ConfirmarPedido.aspx" />
+    <Content Include="EatMall\EatMall\Vista\Local\Local.aspx" />
+    <Content Include="EatMall\EatMall\Vista\Pago\ConfirmacionPago.aspx" />
+    <Content Include="EatMall\EatMall\Vista\Pago\MetodoPago.aspx" />
+    <Content Include="EatMall\EatMall\Vista\Pago\Recibo.aspx" />
+    <Content Include="EatMall\EatMall\Vista\Plazoleta\Plazoleta.aspx" />
+    <Content Include="EatMall\EatMall\Vista\Tienda.aspx" />
     <Content Include="img\alfredo.jpg" />
     <Content Include="img\cazuela.jpg" />
     <Content Include="img\ceviche.jpg" />
@@ -152,6 +165,117 @@
     <Compile Include="Datos\PlazoletaD.cs" />
     <Compile Include="Datos\ProductoD.cs" />
     <Compile Include="Datos\TransaccionD.cs" />
+    <Compile Include="EatMall\EatMall\Datos\BusquedaD.cs" />
+    <Compile Include="EatMall\EatMall\Datos\CentroComercialD.cs" />
+    <Compile Include="EatMall\EatMall\Datos\ConexionDB.cs" />
+    <Compile Include="EatMall\EatMall\Datos\LocalD.cs" />
+    <Compile Include="EatMall\EatMall\Datos\LoginD.cs" />
+    <Compile Include="EatMall\EatMall\Datos\MetodoPagoD.cs" />
+    <Compile Include="EatMall\EatMall\Datos\PedidoD.cs" />
+    <Compile Include="EatMall\EatMall\Datos\PlazoletaD.cs" />
+    <Compile Include="EatMall\EatMall\Datos\ProductoD.cs" />
+    <Compile Include="EatMall\EatMall\Datos\TransaccionD.cs" />
+    <Compile Include="EatMall\EatMall\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Logica\BusquedaL.cs" />
+    <Compile Include="EatMall\EatMall\Logica\CarritoL.cs" />
+    <Compile Include="EatMall\EatMall\Logica\CentroComercialL.cs" />
+    <Compile Include="EatMall\EatMall\Logica\LocalL.cs" />
+    <Compile Include="EatMall\EatMall\Logica\LoginL.cs" />
+    <Compile Include="EatMall\EatMall\Logica\MetodoPagoL.cs" />
+    <Compile Include="EatMall\EatMall\Logica\PedidoL.cs" />
+    <Compile Include="EatMall\EatMall\Logica\PlazoletaL.cs" />
+    <Compile Include="EatMall\EatMall\Logica\ProductoL.cs" />
+    <Compile Include="EatMall\EatMall\Logica\TransaccionL.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\Carrito.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\CentroComercial.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\Ciudad.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\Cliente.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\Departamento.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\DetallePedido.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\Local.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\MetodoPago.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\Pedido.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\Plazoleta.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\Producto.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\Transaccion.cs" />
+    <Compile Include="EatMall\EatMall\Modelo\UsuarioLogin.cs" />
+    <Compile Include="EatMall\EatMall\Properties\AssemblyInfo.cs" />
+    <Compile Include="EatMall\EatMall\Vista\Auth\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Auth\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Busqueda\Resultados.aspx.cs">
+      <DependentUpon>Resultados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Busqueda\Resultados.aspx.designer.cs">
+      <DependentUpon>Resultados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\ConfirmarPedido.aspx.cs">
+      <DependentUpon>ConfirmarPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\ConfirmarPedido.aspx.designer.cs">
+      <DependentUpon>ConfirmarPedido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Local\Local.aspx.cs">
+      <DependentUpon>Local.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Local\Local.aspx.designer.cs">
+      <DependentUpon>Local.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Pago\ConfirmacionPago.aspx.cs">
+      <DependentUpon>ConfirmacionPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Pago\ConfirmacionPago.aspx.designer.cs">
+      <DependentUpon>ConfirmacionPago.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Pago\MetodoPago.aspx.cs">
+      <DependentUpon>MetodoPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Pago\MetodoPago.aspx.designer.cs">
+      <DependentUpon>MetodoPago.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Pago\Recibo.aspx.cs">
+      <DependentUpon>Recibo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Pago\Recibo.aspx.designer.cs">
+      <DependentUpon>Recibo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Plazoleta\Plazoleta.aspx.cs">
+      <DependentUpon>Plazoleta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Plazoleta\Plazoleta.aspx.designer.cs">
+      <DependentUpon>Plazoleta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Tienda.aspx.cs">
+      <DependentUpon>Tienda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EatMall\EatMall\Vista\Tienda.aspx.designer.cs">
+      <DependentUpon>Tienda.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,6 +389,16 @@
     <Content Include="obj\Debug\EatMall.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\EatMall.csproj.Up2Date" />
     <Content Include="Vista\Site.Master" />
+    <Content Include="EatMall\EatMall\EatMall.csproj" />
+    <None Include="EatMall\EatMall\packages.config" />
+    <Content Include="EatMall\EatMall\Vista\Site.Master" />
+    <Content Include="EatMall\EatMall\Web.config" />
+    <None Include="EatMall\EatMall\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="EatMall\EatMall\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

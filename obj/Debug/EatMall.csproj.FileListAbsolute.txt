@@ -1,5 +1,3 @@
-C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\obj\Debug\EatMall.csproj.AssemblyReference.cache
-C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\obj\Debug\EatMall.csproj.CoreCompileInputs.cache
 C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\bin\EatMall.dll.config
 C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\bin\EatMall.dll
 C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\bin\EatMall.pdb
@@ -52,7 +50,8 @@ C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\bin\roslyn\vbc.exe.config
 C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\bin\roslyn\vbc.rsp
 C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\bin\roslyn\VBCSCompiler.exe
 C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\obj\Debug\EatMall.csproj.AssemblyReference.cache
+C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\obj\Debug\EatMall.csproj.CoreCompileInputs.cache
 C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\obj\Debug\EatMall.csproj.Up2Date
 C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\obj\Debug\EatMall.dll
 C:\Users\MSI\Proyecto\EatMall\EatMall\EatMall\obj\Debug\EatMall.pdb
