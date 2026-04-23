@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="EatMall.Vista.Site" %>
+=======
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="EatMall.Site" %>
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
 <!DOCTYPE html>
 <html>
 <head runat="server">
@@ -15,6 +19,7 @@
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">EatMall</a>
             <ul class="navbar-nav ms-auto align-items-center">
+<<<<<<< HEAD
     <li class="nav-item me-3">
         <span>🛒 Carrito: 
             <span class="badge bg-danger">
@@ -69,6 +74,16 @@
         </li>
     </asp:Panel>
 </ul>
+=======
+                <li class="nav-item me-3">
+                    <span>🛒 Carrito: 
+                        <span class="badge bg-danger">
+                            <asp:Label ID="lblCantidadCarrito" runat="server" Text="0"/>
+                        </span>
+                    </span>
+                </li>
+            </ul>
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
         </div>
     </nav>
 

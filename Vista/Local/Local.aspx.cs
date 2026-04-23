@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿ using EatMall.Logica;
+=======
+﻿using EatMall.Logica;
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
 using EatMall.Modelo;
 using System;
 using System.Collections.Generic;

@@ -15,12 +15,17 @@ namespace EatMall
     {
 
         /// <summary>
+<<<<<<< HEAD
         /// Control txtBusqueda.
+=======
+        /// Control form1.
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.TextBox txtBusqueda;
 
         /// <summary>
@@ -40,6 +45,9 @@ namespace EatMall
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptCarousel;
+=======
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
 
         /// <summary>
         /// Control rptCentrosComerciales.

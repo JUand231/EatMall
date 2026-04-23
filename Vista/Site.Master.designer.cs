@@ -7,7 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 namespace EatMall.Vista
+=======
+namespace EatMall
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
 {
 
 
@@ -42,6 +46,7 @@ namespace EatMall.Vista
         protected global::System.Web.UI.WebControls.Label lblCantidadCarrito;
 
         /// <summary>
+<<<<<<< HEAD
         /// Control pnlLogin.
         /// </summary>
         /// <remarks>
@@ -87,6 +92,8 @@ namespace EatMall.Vista
         protected global::System.Web.UI.WebControls.LinkButton btnCerrarSesion;
 
         /// <summary>
+=======
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
         /// Control ContentPlaceHolder1.
         /// </summary>
         /// <remarks>

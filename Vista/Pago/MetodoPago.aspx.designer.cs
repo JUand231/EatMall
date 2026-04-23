@@ -24,6 +24,7 @@ namespace EatMall.Vista.Pago
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+<<<<<<< HEAD
         /// Control hfMetodoPago.
         /// </summary>
         /// <remarks>
@@ -33,6 +34,8 @@ namespace EatMall.Vista.Pago
         protected global::System.Web.UI.WebControls.HiddenField hfMetodoPago;
 
         /// <summary>
+=======
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
         /// Control rptMetodos.
         /// </summary>
         /// <remarks>

@@ -40,6 +40,7 @@ namespace EatMall.Vista
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTotal;
+<<<<<<< HEAD
 
         /// <summary>
         /// Control btnIrConfirmar.
@@ -49,5 +50,7 @@ namespace EatMall.Vista
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnIrConfirmar;
+=======
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
     }
 }

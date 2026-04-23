@@ -1,5 +1,8 @@
 ﻿using EatMall.Logica;
+<<<<<<< HEAD
 using EatMall.Modelo;
+=======
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +21,7 @@ namespace EatMall
                 CentroComercialL logica = new CentroComercialL();
                 rptCentrosComerciales.DataSource = logica.MtListarCentrosComercial();
                 rptCentrosComerciales.DataBind();
+<<<<<<< HEAD
                 CargarDatosHome();
 
 			}
@@ -56,4 +60,9 @@ namespace EatMall
 			}
 		}
 	}
+=======
+            }
+        }
+    }
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
 }

@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"RootPath":"C:\\Users\\MSI\\git\\EatMall\\EatMall\\EatMall","ProjectFileName":"EatMall.csproj","Configuration":"Debug|AnyCPU","FrameworkPath":"","Sources":[],"References":[],"Analyzers":[],"Outputs":[{"OutputItemFullPath":"C:\\Users\\MSI\\git\\EatMall\\EatMall\\EatMall\\bin\\EatMall.dll","OutputItemRelativePath":"EatMall.dll"},{"OutputItemFullPath":"","OutputItemRelativePath":""}],"CopyToOutputEntries":[]}
+=======
+{"RootPath":"C:\\Users\\MSI\\Proyecto\\EatMall\\EatMall\\EatMall","ProjectFileName":"EatMall.csproj","Configuration":"Debug|AnyCPU","FrameworkPath":"","Sources":[],"References":[],"Analyzers":[],"Outputs":[{"OutputItemFullPath":"C:\\Users\\MSI\\Proyecto\\EatMall\\EatMall\\EatMall\\bin\\EatMall.dll","OutputItemRelativePath":"EatMall.dll"},{"OutputItemFullPath":"","OutputItemRelativePath":""}],"CopyToOutputEntries":[]}
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
