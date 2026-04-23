@@ -12,7 +12,7 @@ namespace EatMall.Modelo
         public string Descripcion { get; set; }
         public string Imagen { get; set; }
         public decimal Precio { get; set; }
-        public string Estado { get; set; }
+        public bool Estado { get; set; }
         public Local Local { get; set; }
         public CentroComercial CentroComercial { get; set; }
 

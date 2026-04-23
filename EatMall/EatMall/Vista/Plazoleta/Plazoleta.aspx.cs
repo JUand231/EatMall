@@ -37,7 +37,10 @@ namespace EatMall.Vista
         {
             Button btn = (Button)sender;
             string idPlazoleta = btn.CommandArgument;
-            Response.Redirect("~/Vista/Local/Local.aspx?idPlazoleta=" + idPlazoleta);
+            string idCC = Request.QueryString["id"];
+            Response.Redirect("~/Vista/Local/Local.aspx?idPlazoleta=" +
+                idPlazoleta + "&idCC=" + idCC);
+
         }
     }
 }

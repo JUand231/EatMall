@@ -14,11 +14,10 @@ namespace EatMall.Vista.Pago
         {
             if (!IsPostBack)
             {
-                // BOTÓN VOLVER → PLAZOLETA
-                string idPlazoleta = Request.QueryString["idPlazoleta"];
+                string idCC = Request.QueryString["idCC"];
 
                 btnVolverPlazoleta.NavigateUrl =
-                    "~/Vista/Plazoleta/Plazoleta.aspx?id=" + idPlazoleta;
+                    "~/Vista/Plazoleta/Plazoleta.aspx?id=" + idCC;
 
                 CargarLocales();
             }
