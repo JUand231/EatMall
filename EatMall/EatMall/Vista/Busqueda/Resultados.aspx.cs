@@ -26,10 +26,19 @@ namespace EatMall.Vista.Busqueda
                     rptProductos.DataSource = oBusquedaL.MtBuscarProductos(termino);
                     rptProductos.DataBind();
 
-                    rptCentros.DataSource = oBusquedaL.MtBuscarCentroComercialPorCiudad(termino);
+                    rptCiudad.DataSource = oBusquedaL.MtBuscarCentroComercialPorCiudad(termino);
+                    rptCiudad.DataBind();
+
+                    rptCentros.DataSource = oBusquedaL.MtBuscarCentroComercialPorNombre(termino);
                     rptCentros.DataBind();
                 }
+                if (rptLocales.Items.Count == 0 && rptProductos.Items.Count == 0 && rptCiudad.Items.Count == 0 && rptCentros.Items.Count == 0)
+                {
+                    lblMensaje.Text = $"No se encontraron resultados para: <strong>{termino}</strong>";
+                    lblMensaje.Visible = true;
+                }
             }
+            
         }
     }
 }

@@ -71,7 +71,7 @@
     <div class="row">
         <asp:Repeater ID="rptCentrosComerciales" runat="server">
             <ItemTemplate>
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-3 col-md-3 mb-4">
                     <div class="card shadow-sm p-3 h-100 position-relative">
                         <img src='<%# Eval("Imagen") %>'
                              class="card-img-top"
