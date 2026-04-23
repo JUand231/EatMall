@@ -15,9 +15,10 @@ namespace EatMall.Vista.Local
             if (!IsPostBack)
             {
                 string idPlazoleta = Request.QueryString["idPlazoleta"];
+                string idCC = Request.QueryString["idCC"];
 
                 btnVolverLocal.NavigateUrl =
-                    "~/Vista/Local/Local.aspx?idPlazoleta=" + idPlazoleta;
+                    "~/Vista/Local/Local.aspx?idPlazoleta=" + idPlazoleta + "&idCC=" + idCC;
 
                 if (!string.IsNullOrEmpty(Request.QueryString["idLocal"]))
                     Session["IdLocal"] = Convert.ToInt32(Request.QueryString["idLocal"]);

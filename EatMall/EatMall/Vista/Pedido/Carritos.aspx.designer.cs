@@ -9,11 +9,8 @@
 
 namespace EatMall.Vista.Pedido
 {
-
-
     public partial class Carritos
     {
-
         /// <summary>
         /// Control btnVolver.
         /// </summary>
