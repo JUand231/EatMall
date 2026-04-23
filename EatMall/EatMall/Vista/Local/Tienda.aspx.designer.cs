@@ -7,29 +7,29 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace EatMall
+namespace EatMall.Vista.Local
 {
 
 
-    public partial class Index
+    public partial class Tienda
     {
 
         /// <summary>
-        /// Control rptCarousel.
+        /// Control btnVolverLocal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptCarousel;
+        protected global::System.Web.UI.WebControls.HyperLink btnVolverLocal;
 
         /// <summary>
-        /// Control rptCentrosComerciales.
+        /// Control rptProductos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptCentrosComerciales;
+        protected global::System.Web.UI.WebControls.Repeater rptProductos;
     }
 }

@@ -116,13 +116,14 @@
     <Content Include="Vista\Assets\Img\HeroPlazoleta.png" />
     <Content Include="Vista\Auth\Login.aspx" />
     <Content Include="Vista\Busqueda\Resultados.aspx" />
-    <Content Include="Vista\ConfirmarPedido.aspx" />
+    <Content Include="Vista\Pedido\Carritos.aspx" />
+    <Content Include="Vista\Pedido\ConfirmarPedido.aspx" />
     <Content Include="Vista\Local\Local.aspx" />
     <Content Include="Vista\Pago\ConfirmacionPago.aspx" />
     <Content Include="Vista\Pago\MetodoPago.aspx" />
     <Content Include="Vista\Pago\Recibo.aspx" />
     <Content Include="Vista\Plazoleta\Plazoleta.aspx" />
-    <Content Include="Vista\Tienda.aspx" />
+    <Content Include="Vista\Local\Tienda.aspx" />
     <Content Include="Vista\Usuario\Perfil.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -185,11 +186,18 @@
     <Compile Include="Vista\Busqueda\Resultados.aspx.designer.cs">
       <DependentUpon>Resultados.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vista\ConfirmarPedido.aspx.cs">
+    <Compile Include="Vista\Pedido\Carritos.aspx.cs">
+      <DependentUpon>Carritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Pedido\Carritos.aspx.designer.cs">
+      <DependentUpon>Carritos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Pedido\ConfirmarPedido.aspx.cs">
       <DependentUpon>ConfirmarPedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vista\ConfirmarPedido.aspx.designer.cs">
+    <Compile Include="Vista\Pedido\ConfirmarPedido.aspx.designer.cs">
       <DependentUpon>ConfirmarPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Local\Local.aspx.cs">
@@ -227,18 +235,18 @@
     <Compile Include="Vista\Plazoleta\Plazoleta.aspx.designer.cs">
       <DependentUpon>Plazoleta.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vista\Site.Master.cs">
+    <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vista\Site.Master.designer.cs">
+    <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Vista\Tienda.aspx.cs">
+    <Compile Include="Vista\Local\Tienda.aspx.cs">
       <DependentUpon>Tienda.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vista\Tienda.aspx.designer.cs">
+    <Compile Include="Vista\Local\Tienda.aspx.designer.cs">
       <DependentUpon>Tienda.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Usuario\Perfil.aspx.cs">
@@ -266,7 +274,7 @@
     <Content Include="obj\Debug\EatMall.csproj.AssemblyReference.cache" />
     <Content Include="obj\Debug\EatMall.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\EatMall.csproj.Up2Date" />
-    <Content Include="Vista\Site.Master" />
+    <Content Include="Site.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

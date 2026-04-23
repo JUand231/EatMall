@@ -23,9 +23,23 @@ namespace EatMall.Vista.Auth
 
             if (cliente != null)
             {
+                // 1. Guardar datos en sesión
                 Session["IdCliente"] = cliente.Id;
                 Session["NombreCliente"] = cliente.Nombre;
-                Response.Redirect("~/Vista/ConfirmarPedido.aspx");
+
+                
+                string returnUrl = Request.QueryString["~/Vista/Pago/MetodoPago"];
+
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    
+                    Response.Redirect(returnUrl);
+                }
+                else
+                {
+                    // Si no hay ReturnUrl, lo mandamos a la página por defecto (ConfirmarPedido o Index)
+                    Response.Redirect("~/Vista/Pedido/ConfirmarPedido.aspx");
+                }
             }
             else
             {
