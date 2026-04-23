@@ -37,10 +37,16 @@ namespace EatMall.Datos
                                 Email = dr["Email"].ToString(),
                                 Telefono = dr["Telefono"].ToString(),
                                 Contraseña = dr["Contraseña"].ToString(),
+<<<<<<< HEAD
+								Estado = Convert.ToBoolean(dr["Estado"])
+
+							};
+=======
                                 Estado = dr["Estado"].ToString(),
 
 
                             };
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
 
                         }
                     }

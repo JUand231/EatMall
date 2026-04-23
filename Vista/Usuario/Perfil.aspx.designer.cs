@@ -7,99 +7,101 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-<<<<<<< HEAD
-namespace EatMall.Vista
-=======
-namespace EatMall
->>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
+namespace EatMall.Vista.Usuario
 {
 
 
-    public partial class Site
+    public partial class Perfil
     {
 
         /// <summary>
-        /// Control head.
+        /// Control lblNombreCompleto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Label lblNombreCompleto;
 
         /// <summary>
-        /// Control form1.
+        /// Control lblEmail.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
-        /// Control lblCantidadCarrito.
+        /// Control txtNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCantidadCarrito;
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
 
         /// <summary>
-<<<<<<< HEAD
-        /// Control pnlLogin.
+        /// Control txtApellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlLogin;
+        protected global::System.Web.UI.WebControls.TextBox txtApellido;
 
         /// <summary>
-        /// Control Panel2.
+        /// Control txtTelefono.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel2;
+        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
 
         /// <summary>
-        /// Control pnlPerfil.
+        /// Control txtContrasena.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlPerfil;
+        protected global::System.Web.UI.WebControls.TextBox txtContrasena;
 
         /// <summary>
-        /// Control lblNombreUsuario.
+        /// Control lblMensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombreUsuario;
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
 
         /// <summary>
-        /// Control btnCerrarSesion.
+        /// Control btnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnCerrarSesion;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
 
         /// <summary>
-=======
->>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
-        /// Control ContentPlaceHolder1.
+        /// Control rptPedidos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Repeater rptPedidos;
+
+        /// <summary>
+        /// Control lblSinPedidos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSinPedidos;
     }
 }

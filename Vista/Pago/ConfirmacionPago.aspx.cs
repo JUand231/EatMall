@@ -12,6 +12,30 @@ namespace EatMall.Vista.Pago
         {
             if (!IsPostBack)
             {
+<<<<<<< HEAD
+                if (Session["MetodoPago"] == null)
+                {
+                    Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
+                    return;
+                }
+
+                int idMetodo = Convert.ToInt32(Session["MetodoPago"]);
+                int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
+
+                MetodoPagoL metodoL = new MetodoPagoL();
+                var metodos = metodoL.ObtenerMetodos(idLocal);
+                var metodoSeleccionado = metodos.Find(m => m.Id == idMetodo);
+
+                if (metodoSeleccionado != null)
+                {
+                    lblMetodo.Text = metodoSeleccionado.NombreMetodo;
+                    Session["NombreMetodoPago"] = metodoSeleccionado.NombreMetodo;
+                }
+                else
+                    Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
+
+                lblTotal.Text = Session["Total"] != null ? "$" + Session["Total"].ToString() : "$0";
+=======
                 string metodo = Session["MetodoPago"]?.ToString();
 
                 switch (metodo)
@@ -36,6 +60,7 @@ namespace EatMall.Vista.Pago
                 // Por ahora ponemos un total de prueba
                 // Cuando tengas el carrito esto vendrá de Session["Total"]
                 lblTotal.Text = "$50.000";
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
             }
         }
 
@@ -49,6 +74,11 @@ namespace EatMall.Vista.Pago
                 FechaTransaccion = DateTime.Now
             };
 
+<<<<<<< HEAD
+            int idPedido = 1;
+            int idTransaccion = logica.ProcesarPago(oTransaccion, idPedido);
+            Session["IdTransaccion"] = idTransaccion;
+=======
             // Por ahora usamos IdPedido de prueba
             // Cuando tengas el carrito esto vendrá de Session["IdPedido"]
             int idPedido = 1;
@@ -56,6 +86,7 @@ namespace EatMall.Vista.Pago
             int idTransaccion = logica.ProcesarPago(oTransaccion, idPedido);
             Session["IdTransaccion"] = idTransaccion;
 
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
             Response.Redirect("~/Vista/Pago/Recibo.aspx");
         }
 
