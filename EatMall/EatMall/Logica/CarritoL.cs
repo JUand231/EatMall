@@ -49,16 +49,12 @@ namespace EatMall.Logica
             }
         }
 
-        // Llama esto en Page_Load — limpia si no hubo movimientos
-        public void LimpiarSiNoHuboMovimiento()
+        
+        // REEMPLAZA EL MÉTODO LimpiarSiNoHuboMovimiento POR ESTE:
+        public void VaciarCarritoDespuesDePedido()
         {
-            // Si NO hubo movimiento → limpiar
-            if (HttpContext.Current.Session[MODIFICADO_KEY] == null ||
-                !(bool)HttpContext.Current.Session[MODIFICADO_KEY])
-            {
-                HttpContext.Current.Session[SESSION_KEY] = new List<Carrito>();
-            }
-            // Siempre resetear el flag después de refrescar
+            // Solo vaciamos la lista y el flag cuando el pedido sea REAL
+            HttpContext.Current.Session[SESSION_KEY] = new List<Carrito>();
             HttpContext.Current.Session[MODIFICADO_KEY] = false;
         }
 

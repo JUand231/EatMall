@@ -72,7 +72,9 @@
                 <asp:Repeater ID="rptLocales" runat="server">
                     <ItemTemplate>
                         <div class="col">
-                            <div class="local-card" onclick="window.location='/Vista/Tienda.aspx?idLocal=<%# Eval("Id") %>&idPlazoleta=<%= Request.QueryString["idPlazoleta"] %>'">
+
+                            <div class="local-card" onclick="window.location='/Vista/Local/Tienda.aspx?idLocal=<%# Eval("Id") %>&idPlazoleta=<%= Request.QueryString["idPlazoleta"] %>'">
+
                                 <asp:Image ID="imgLocal" runat="server"
                                     ImageUrl='<%# string.IsNullOrEmpty(Eval("Imagen").ToString()) ? "~/img/default-local.png" : Eval("Imagen").ToString() %>'
                                     CssClass="local-icono"

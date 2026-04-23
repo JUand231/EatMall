@@ -3,7 +3,7 @@ using EatMall.Modelo;
 using System;
 using System.Collections.Generic;
 
-namespace EatMall.Vista
+namespace EatMall.Vista.Pedido
 {
     public partial class ConfirmarPedido : System.Web.UI.Page
     {
@@ -34,28 +34,33 @@ namespace EatMall.Vista
             int idCliente = Convert.ToInt32(Session["IdCliente"]);
             List<Carrito> carrito = carritoL.ObtenerCarrito();
 
-            // Guardar el total en Session antes de redirigir
+            // 1. Guardamos el total para la siguiente pantalla
             decimal total = carritoL.ObtenerTotal();
             Session["Total"] = total.ToString("N2");
 
-            Pedido pedido = pedidoL.ConfirmarPedido(carrito, idCliente);
-            Session["CodigoPedido"] = pedido.CodigoPedido;
+            // 2. Creamos el registro del pedido en la base de datos
+            Modelo.Pedido pedido = pedidoL.ConfirmarPedido(carrito, idCliente);
 
-            Session["Carrito"] = new List<Carrito>();
-            Session["CarritoModificado"] = false;
+            // 3. Guardamos datos del pedido para usarlos en el pago y el recibo
+            Session["CodigoPedido"] = pedido.CodigoPedido;
+            Session["IdPedido"] = pedido.Id; // Muy importante para la transacción
+
+            // --- ELIMINAMOS LAS LÍNEAS QUE VACÍAN EL CARRITO AQUÍ ---
+            // El carrito se mantiene vivo hasta que el pago se apruebe.
 
             Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
         }
+        
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             // No elimina el carrito, solo vuelve a la tienda
-            Response.Redirect("~/Vista/Tienda.aspx");
+            Response.Redirect("~/Vista/Local/Tienda.aspx");
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Vista/Tienda.aspx");
+            Response.Redirect("~/Vista/Local/Tienda.aspx");
         }
     }
 }
