@@ -30,6 +30,15 @@
     <div class="container mt-5 mb-5">
         <h3 class="fw-bold mb-4"><i class="bi bi-cart3 me-2"></i>Mi Carrito</h3>
 
+        
+
+        <li class="nav-item me-3">
+            <asp:LinkButton ID="btnVolver" runat="server" PostBackUrl="~/Index.aspx" CssClass="text-decoration-none">
+                <span class="fw-semibold">↩
+                </span>
+            </asp:LinkButton>
+        </li>
+
         <div class="row">
             <!-- PRODUCTOS -->
             <div class="col-md-8">

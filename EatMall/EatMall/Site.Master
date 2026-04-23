@@ -42,12 +42,15 @@
                 </asp:Panel>
 
                 <ul class="navbar-nav ms-auto align-items-center">
+
                     <li class="nav-item me-3">
-                        <span class="fw-semibold">🛒 Carrito: 
-                            <span class="badge bg-danger rounded-pill">
-                                <asp:Label ID="lblCantidadCarrito" runat="server" Text="0" />
+                        <asp:LinkButton ID="btnCarrito" runat="server" PostBackUrl="~/Vista/Pedido/Carritos.aspx" CssClass="text-decoration-none">
+                            <span class="fw-semibold">🛒 
+            <span class="badge bg-danger rounded-pill">
+                <asp:Label ID="lblCantidadCarrito" runat="server" Text="0" />
+            </span>
                             </span>
-                        </span>
+                        </asp:LinkButton>
                     </li>
 
                     <asp:Panel ID="pnlLogin" runat="server" Visible="true">
