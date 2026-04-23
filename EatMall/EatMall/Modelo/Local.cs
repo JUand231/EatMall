@@ -14,7 +14,9 @@ namespace EatMall.Modelo
         public string Email { get; set; }
         public string Imagen { get; set; }
         public string Estado { get; set; }
+        public double Promedio { get; set; }
         public Plazoleta Plazoleta { get; set; }
+
         public CentroComercial CentroComercial { get; set; }
         public HorarioLocal HorarioLocal { get; set; }
     }
