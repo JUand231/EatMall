@@ -112,9 +112,12 @@
     <Content Include="obj\Debug\EatMall.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\EatMall.dll" />
     <Content Include="obj\Debug\EatMall.pdb" />
+    <Content Include="Vista\Assets\Css\StyleLR.css" />
     <Content Include="Vista\Assets\Img\CCDefault.png" />
     <Content Include="Vista\Assets\Img\HeroPlazoleta.png" />
+    <Content Include="Vista\Assets\Img\LogoEatMall.png" />
     <Content Include="Vista\Auth\Login.aspx" />
+    <Content Include="Vista\Auth\Registro.aspx" />
     <Content Include="Vista\Busqueda\Resultados.aspx" />
     <Content Include="Vista\Pedido\Carritos.aspx" />
     <Content Include="Vista\Pedido\ConfirmarPedido.aspx" />
@@ -138,6 +141,7 @@
     <Compile Include="Datos\PedidoD.cs" />
     <Compile Include="Datos\PlazoletaD.cs" />
     <Compile Include="Datos\ProductoD.cs" />
+    <Compile Include="Datos\RegistroD.cs" />
     <Compile Include="Datos\TransaccionD.cs" />
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -156,6 +160,7 @@
     <Compile Include="Logica\PedidoL.cs" />
     <Compile Include="Logica\PlazoletaL.cs" />
     <Compile Include="Logica\ProductoL.cs" />
+    <Compile Include="Logica\RegistroL.cs" />
     <Compile Include="Logica\TransaccionL.cs" />
     <Compile Include="Modelo\Carrito.cs" />
     <Compile Include="Modelo\CentroComercial.cs" />
@@ -178,6 +183,13 @@
     </Compile>
     <Compile Include="Vista\Auth\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Auth\Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Auth\Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Busqueda\Resultados.aspx.cs">
       <DependentUpon>Resultados.aspx</DependentUpon>
@@ -285,7 +297,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="Vista\Assets\Css\" />
     <Folder Include="Vista\Assets\Js\" />
   </ItemGroup>
   <PropertyGroup>

@@ -47,5 +47,10 @@ namespace EatMall.Vista.Auth
                     "alert('Correo o contraseña incorrectos');", true);
             }
         }
-    }
+
+		protected void btnVolver_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("~/Index.aspx");
+		}
+	}
 }

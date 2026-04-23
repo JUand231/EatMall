@@ -37,7 +37,7 @@ namespace EatMall.Datos
                                 Email = dr["Email"].ToString(),
                                 Telefono = dr["Telefono"].ToString(),
                                 Contraseña = dr["Contraseña"].ToString(),
-                                Estado = dr["Estado"].ToString(),
+                                Estado = Convert.ToBoolean(dr["Estado"]),
 
 
                             };
