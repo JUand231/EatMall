@@ -98,10 +98,9 @@
         }
 
         .nombreCC {
-            font-size: 15px;
-            font-weight: bold;
-            color: #e84040;
-            margin-top: 8px;
+            font-size: 12px;
+            color: #999;
+            margin-top: 6px;
         }
 
         .sin-resultados {
@@ -150,7 +149,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <button class="btn-icon" onclick="history.back()"><i class="bi bi-arrow-left"></i></button>
+
 
         <div class="header">
             <button type="button" class="btn-volver" onclick="history.back()">
@@ -231,7 +230,7 @@
                     <ItemTemplate>
                         <div class="card">
                             <a href='<%# "../Plazoleta/Plazoleta.aspx?id=" + Eval("Id") %>' style="text-decoration: none; color: inherit;">
-                                <img src='<%# Eval("Imagen") %>' alt="Centro Comercial"  onerror="this.src='https://via.placeholder.com/220x150?text=Sin+imagen'" />
+                                <img src='<%# Eval("Imagen") %>' alt="Centro Comercial" onerror="this.src='https://via.placeholder.com/220x150?text=Sin+imagen'" />
                                 <div class="card-body">
                                     <strong><%# Eval("Nombre") %></strong> <span><%# Eval("Descripcion") %></span>
                                     <div class="card-meta">📍 <%# Eval("Ubicacion") %></div>
