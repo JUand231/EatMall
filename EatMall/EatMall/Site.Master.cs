@@ -29,7 +29,7 @@ namespace EatMall.Vista
             if (!string.IsNullOrEmpty(txtBusqueda.Text.Trim()))
             {
                 // Redirige a la página de resultados pasando el término como querystring
-                Response.Redirect("Vista/Busqueda/Resultados.aspx?q=" + Server.UrlEncode(txtBusqueda.Text.Trim()));
+                Response.Redirect("/Vista/Busqueda/Resultados.aspx?q=" + Server.UrlEncode(txtBusqueda.Text.Trim()));
             }
             else
             {
