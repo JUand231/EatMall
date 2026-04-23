@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MetodosPago.aspx.cs" Inherits="EatMall.Vista.Pago.MetodosPago" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MetodoPago.aspx.cs" Inherits="EatMall.Vista.Pago.MetodosPago" %>
 
 <!DOCTYPE html>
 <html>

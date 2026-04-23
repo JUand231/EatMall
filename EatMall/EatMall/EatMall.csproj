@@ -163,6 +163,7 @@
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Modelo\Departamento.cs" />
     <Compile Include="Modelo\DetallePedido.cs" />
+    <Compile Include="Modelo\HorarioLocal.cs" />
     <Compile Include="Modelo\Local.cs" />
     <Compile Include="Modelo\MetodoPago.cs" />
     <Compile Include="Modelo\Pedido.cs" />
