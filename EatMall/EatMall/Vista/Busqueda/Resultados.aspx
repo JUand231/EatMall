@@ -150,7 +150,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <button class="btn-icon" onclick="history.back()"><i class="bi bi-arrow-left"></i></button>
+        
 
         <div class="header">
             <button type="button" class="btn-volver" onclick="history.back()">
