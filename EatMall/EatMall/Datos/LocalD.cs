@@ -14,11 +14,18 @@ namespace EatMall.Datos
             using (SqlConnection cn = ConexionDB.MtAbrirConexion())
             {
                 cn.Open();
+             
+
                 string query = @"SELECT l.Id, l.Nombre, l.Descripcion, l.Telefono, 
-                                        l.Email, l.Imagen, l.Estado, p.Nombre AS NombrePlazoleta
-                                 FROM dbo.Local l
-                                 INNER JOIN dbo.Plazoleta p ON l.IdPlazoleta = p.Id
-                                 WHERE l.IdPlazoleta = @IdPlazoleta";
+                        l.Email, l.Imagen, l.Estado, p.Nombre AS NombrePlazoleta,
+                        ISNULL((SELECT AVG(CAST(c.Puntaje AS FLOAT)) 
+                                FROM dbo.Calificacion c 
+                                WHERE c.IdLocal = l.Id), 0) AS Promedio
+                 FROM dbo.Local l
+                 INNER JOIN dbo.Plazoleta p ON l.IdPlazoleta = p.Id
+                 WHERE l.IdPlazoleta = @IdPlazoleta";
+
+
 
                 using (SqlCommand cmd = new SqlCommand(query, cn))
                 {
@@ -37,6 +44,7 @@ namespace EatMall.Datos
                                 Email = dr["Email"].ToString(),
                                 Imagen = dr["Imagen"].ToString(),
                                 Estado = dr["Estado"].ToString(),
+                                Promedio = Convert.ToDouble(dr["Promedio"]),
                                 Plazoleta = new Plazoleta()
                                 {
                                     Nombre = dr["NombrePlazoleta"].ToString()

@@ -10,8 +10,12 @@ namespace EatMall.Vista.Pago
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // MAL: Si esto está aquí suelto, se ejecuta siempre y puede resetear datos
+            // Session["Carrito"] = new List<Carrito>(); 
+
             if (!IsPostBack)
             {
+                // BIEN: Aquí solo se carga la lista de métodos
                 int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
                 rptMetodos.DataSource = metodo.ObtenerMetodos(idLocal);
                 rptMetodos.DataBind();
@@ -25,12 +29,22 @@ namespace EatMall.Vista.Pago
             if (string.IsNullOrEmpty(metodoSeleccionado))
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "alerta",
-                    "alert('Por favor selecciona un método de pago');", true);
+                    "alert('No se detectó ningún método seleccionado');", true);
+                return;
+            }
+
+            // DIAGNÓSTICO: Ver si el carrito existe justo antes de irnos
+            var carrito = (System.Collections.Generic.List<EatMall.Modelo.Carrito>)Session["Carrito"];
+            if (carrito == null || carrito.Count == 0)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alerta",
+                   "alert('¡Alerta! El carrito ya estaba vacío antes de salir de esta página');", true);
                 return;
             }
 
             Session["MetodoPago"] = metodoSeleccionado;
-            Response.Redirect("~/Vista/Pago/ConfirmacionPago.aspx");
+            Response.Redirect("~/Vista/Pago/ConfirmacionPago.aspx", false);
+            Context.ApplicationInstance.CompleteRequest();
         }
     }
 }

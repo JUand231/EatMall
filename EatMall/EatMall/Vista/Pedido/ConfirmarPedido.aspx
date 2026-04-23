@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ConfirmarPedido.aspx.cs"
-    Inherits="EatMall.Vista.ConfirmarPedido" MasterPageFile="~/Vista/Site.Master"
+    Inherits="EatMall.Vista.Pedido.ConfirmarPedido" MasterPageFile="~/Site.Master"
     EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

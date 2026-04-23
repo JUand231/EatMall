@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace EatMall.Vista
+namespace EatMall.Vista.Pedido
 {
 
 

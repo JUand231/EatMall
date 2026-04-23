@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Perfil.aspx.cs" Inherits="EatMall.Vista.Usuario.Perfil" MasterPageFile="~/Vista/Site.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Perfil.aspx.cs" Inherits="EatMall.Vista.Usuario.Perfil" MasterPageFile="~/Site.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
