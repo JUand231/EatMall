@@ -14,6 +14,8 @@ namespace EatMall.Modelo
         public decimal Precio { get; set; }
         public string Estado { get; set; }
         public Local Local { get; set; }
+        public CentroComercial CentroComercial { get; set; }
+
 
 
 
