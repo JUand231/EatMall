@@ -50,6 +50,30 @@
             margin-top: 8px;
             word-break: break-word;
         }
+
+        .local-wrapper {
+            position: relative;
+            width: 80px;
+            margin: 0 auto;
+        }
+
+        .estado-local {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            border: 2px solid white;
+        }
+
+        .abierto {
+            background-color: #28a745;
+        }
+
+        .cerrado {
+            background-color: #dc3545;
+        }
     </style>
 </head>
 <body>
@@ -71,17 +95,28 @@
             <div class="row row-cols-3 row-cols-sm-4 row-cols-md-6 g-4">
                 <asp:Repeater ID="rptLocales" runat="server">
                     <ItemTemplate>
+
                         <div class="col">
+                            <div class="local-card"
+                                onclick="window.location='/Vista/Local/Tienda.aspx?idLocal=<%# Eval("Id") %>&idPlazoleta=<%= Request.QueryString["idPlazoleta"] %> &idCC=<%=Request.QueryString["IdCC"] %>'">
 
-                            <div class="local-card" onclick="window.location='/Vista/Local/Tienda.aspx?idLocal=<%# Eval("Id") %>&idPlazoleta=<%= Request.QueryString["idPlazoleta"] %>'">
+                                <div class="local-wrapper">
 
-                                <asp:Image ID="imgLocal" runat="server"
-                                    ImageUrl='<%# string.IsNullOrEmpty(Eval("Imagen").ToString()) ? "~/img/default-local.png" : Eval("Imagen").ToString() %>'
-                                    CssClass="local-icono"
-                                    AlternateText='<%# Eval("Nombre") %>' />
+                                    <asp:Image ID="imgLocal" runat="server"
+                                        ImageUrl='<%# string.IsNullOrEmpty(Eval("Imagen").ToString()) ? "~/img/default-local.png" : Eval("Imagen").ToString() %>'
+                                        CssClass="local-icono"
+                                        AlternateText='<%# Eval("Nombre") %>' />
+
+                                    <span class='estado-local <%# Eval("Estado").ToString() == "Abierto" ? "abierto" : "cerrado" %>'
+                                        title='<%# Eval("Estado") %>'></span>
+
+                                </div>
+
                                 <p class="local-nombre"><%# Eval("Nombre") %></p>
+
                             </div>
                         </div>
+
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
