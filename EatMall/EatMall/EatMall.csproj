@@ -162,6 +162,7 @@
     <Compile Include="Logica\ProductoL.cs" />
     <Compile Include="Logica\RegistroL.cs" />
     <Compile Include="Logica\TransaccionL.cs" />
+    <Compile Include="Modelo\Calificacion.cs" />
     <Compile Include="Modelo\Carrito.cs" />
     <Compile Include="Modelo\CentroComercial.cs" />
     <Compile Include="Modelo\Ciudad.cs" />

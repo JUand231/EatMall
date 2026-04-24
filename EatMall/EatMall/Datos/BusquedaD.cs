@@ -23,6 +23,8 @@ namespace EatMall.Datos
                                            P.Descripcion,   
                                            P.Imagen,
                                            L.Id AS IdLocal,
+                                           Pl.Id AS IdPlazoleta,
+                                           CC.Id as IdCC,
                                            L.Nombre AS NombreLocal,
                                            CC.Nombre AS NombreCentroComercial
                                    FROM Producto P
@@ -48,6 +50,8 @@ namespace EatMall.Datos
                                 Descripcion = dr["Descripcion"].ToString(),
                                 Imagen = dr["Imagen"].ToString(),
                                 Precio = Convert.ToDecimal(dr["Precio"]),
+                                IdPlazoleta = Convert.ToInt32(dr["IdPlazoleta"]),
+                                IdCC = Convert.ToInt32(dr["IdCC"]),
                                 Local = new Local()
                                 {
                                     Id = Convert.ToInt32(dr["IdLocal"]),
@@ -79,6 +83,8 @@ namespace EatMall.Datos
                                   l.Estado,
                                   l.Imagen,
                                   p.Nombre AS Plazoleta,
+                                  p.Id As IdPlazoleta,
+                                  cc.Id As IdCC,
                                   cc.Nombre AS CentroComercial
                                   FROM Local l
                                   INNER JOIN Plazoleta p ON l.IdPlazoleta = p.Id
@@ -101,6 +107,8 @@ namespace EatMall.Datos
                                 Nombre = dr["Local"].ToString(),
                                 Descripcion = dr["Descripcion"].ToString(),
                                 Imagen = dr["Imagen"].ToString(),
+                                IdPlazoleta = Convert.ToInt32(dr["IdPlazoleta"]),
+                                IdCC = Convert.ToInt32(dr["IdCC"]),
                                 Plazoleta = new Plazoleta()
                                 {
                                     Nombre = dr["Plazoleta"].ToString()

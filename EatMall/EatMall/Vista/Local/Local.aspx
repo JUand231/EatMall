@@ -23,10 +23,10 @@
             position: relative;
         }
 
-        .local-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-        }
+            .local-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+            }
 
         .local-icono {
             width: 90px;
@@ -56,10 +56,10 @@
             transition: background 0.2s;
         }
 
-        .btn-ver-menu:hover {
-            background-color: #a93226;
-            color: white;
-        }
+            .btn-ver-menu:hover {
+                background-color: #a93226;
+                color: white;
+            }
 
         .btn-cerrado {
             background-color: #e5e7eb;
@@ -145,7 +145,7 @@
 
                                 <!-- Calificación -->
                                 <div class="calificacion">
-                                    ★ <%# string.Format("{0:0.0}", Eval("Promedio")) %>
+                                    ★ <%# string.Format("{0:0.0}", Convert.ToDouble(Eval("Promedio"))) %>
                                 </div>
 
                                 <div class="local-wrapper">
@@ -158,8 +158,7 @@
 
                                     <!-- Estado -->
                                     <span class='estado-local <%# Eval("Estado").ToString() == "Abierto" ? "abierto" : "cerrado" %>'
-                                        title='<%# Eval("Estado") %>'>
-                                    </span>
+                                        title='<%# Eval("Estado") %>'></span>
 
                                 </div>
 
@@ -168,13 +167,12 @@
                                 </p>
 
                                 <!-- Botón -->
-                                <%# Eval("Estado").ToString() == "Abierto"
+                                <%# Eval("Estado").ToString().Trim() == "Abierto"
                                     ? "<a href='/Vista/Local/Tienda.aspx?idLocal=" + Eval("Id") +
                                       "&idPlazoleta=" + Request.QueryString["idPlazoleta"] +
                                       "&idCC=" + Request.QueryString["idCC"] +
                                       "' class='btn-ver-menu d-block text-decoration-none text-center'>Ver Menú</a>"
                                     : "<button class='btn-cerrado' disabled>Cerrado</button>" %>
-
                             </div>
                         </div>
 

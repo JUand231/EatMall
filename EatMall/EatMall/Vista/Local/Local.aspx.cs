@@ -31,6 +31,7 @@ namespace EatMall.Vista.Pago
 
             List<Modelo.Local> lista = localL.MtListarLocales(idPlazoleta);
 
+
             if (lista.Count == 0)
             {
                 lblMensaje.Text = "No hay locales disponibles en esta plazoleta.";

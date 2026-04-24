@@ -174,7 +174,7 @@
                 <asp:Repeater ID="rptLocales" runat="server">
                     <ItemTemplate>
                         <div class="card">
-                            <a href='<%# "/Vista/Local/Tienda.aspx?idLocal=" + Eval("Id") %>' style="text-decoration: none; color: inherit;">
+                            <a href='<%# "/Vista/Local/Tienda.aspx?idLocal=" + Eval("Id") + "&idPlazoleta=" + Eval("IdPlazoleta") + "&idCC=" + Eval("IdCC") %>'style="text-decoration: none; color: inherit;">
                                 <img src='<%# Eval("Imagen") %>' alt="Local" onerror="this.src='https://via.placeholder.com/220x150?text=Sin+imagen'" />
                                 <div class="card-body">
                                     <strong><%# Eval("Nombre") %></strong> <span><%# Eval("Descripcion") %></span>
@@ -193,7 +193,7 @@
                 <asp:Repeater ID="rptProductos" runat="server">
                     <ItemTemplate>
                         <div class="card">
-                            <a href='<%# "/Vista/Local/Tienda.aspx?idLocal=" + Eval("Local.Id") %>' style="text-decoration: none; color: inherit;">
+                            <a href='<%# "/Vista/Local/Tienda.aspx?idLocal=" + Eval("Local.Id") + "&idPlazoleta=" + Eval("IdPlazoleta") + "&idCC=" + Eval("IdCC") %>'style="text-decoration: none; color: inherit;">
                                 <img src='<%# Eval("Imagen") %>' alt="Producto" onerror="this.src='https://via.placeholder.com/220x150?text=Sin+imagen'" />
                                 <div class="card-body">
                                     <strong><%# Eval("Nombre") %></strong> <span><%# Eval("Descripcion") %></span>

@@ -16,7 +16,7 @@
 <body>
 	<form id="form1" runat="server">
 
-		<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
 			<div class="container d-flex align-items-center gap-3">
 				<a class="navbar-brand fw-bold" href="/Index.aspx">EatMall</a>
 
@@ -99,7 +99,7 @@
 			</div>
 		</nav>
 
-		<main class="container mt-4">
+		<main class="container mt-0 pt-3">
 			<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
 		</main>
 
