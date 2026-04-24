@@ -141,6 +141,7 @@
     <Compile Include="Datos\PedidoD.cs" />
     <Compile Include="Datos\PlazoletaD.cs" />
     <Compile Include="Datos\ProductoD.cs" />
+    <Compile Include="Datos\PromocionD.cs" />
     <Compile Include="Datos\RegistroD.cs" />
     <Compile Include="Datos\TransaccionD.cs" />
     <Compile Include="Index.aspx.cs">
@@ -160,6 +161,7 @@
     <Compile Include="Logica\PedidoL.cs" />
     <Compile Include="Logica\PlazoletaL.cs" />
     <Compile Include="Logica\ProductoL.cs" />
+    <Compile Include="Logica\PromocionL.cs" />
     <Compile Include="Logica\RegistroL.cs" />
     <Compile Include="Logica\TransaccionL.cs" />
     <Compile Include="Modelo\Carrito.cs" />
@@ -174,6 +176,7 @@
     <Compile Include="Modelo\Pedido.cs" />
     <Compile Include="Modelo\Plazoleta.cs" />
     <Compile Include="Modelo\Producto.cs" />
+    <Compile Include="Modelo\Promocion.cs" />
     <Compile Include="Modelo\Transaccion.cs" />
     <Compile Include="Modelo\UsuarioLogin.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
