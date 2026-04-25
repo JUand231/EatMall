@@ -31,6 +31,22 @@ namespace EatMall.Vista
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+            int idCliente = Convert.ToInt32(Session["IdCliente"]);
+            List<Carrito> carrito = carritoL.ObtenerCarrito();
+
+            // Guardar el total en Session antes de redirigir
+            decimal total = carritoL.ObtenerTotal();
+            Session["Total"] = total.ToString("N2");
+
+            Pedido pedido = pedidoL.ConfirmarPedido(carrito, idCliente);
+            Session["CodigoPedido"] = pedido.CodigoPedido;
+
+            Session["Carrito"] = new List<Carrito>();
+            Session["CarritoModificado"] = false;
+
+            Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
+=======
             Response.Redirect("~/Vista/Pago/MetodoPago.aspx", false);
             int idCliente = Convert.ToInt32(Session["IdCliente"]);
             List<Carrito> carrito = carritoL.ObtenerCarrito();
@@ -48,6 +64,7 @@ namespace EatMall.Vista
             btnConfirmar.Enabled = false;
             btnCancelar.Enabled = false;
             
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
