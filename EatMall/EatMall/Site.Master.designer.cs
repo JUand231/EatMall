@@ -60,24 +60,6 @@ namespace EatMall.Vista
         protected global::System.Web.UI.WebControls.LinkButton btnBuscar;
 
         /// <summary>
-        /// Control btnCarrito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnCarrito;
-
-        /// <summary>
-        /// Control lblCantidadCarrito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCantidadCarrito;
-
-        /// <summary>
         /// Control pnlLogin.
         /// </summary>
         /// <remarks>
@@ -85,6 +67,15 @@ namespace EatMall.Vista
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlLogin;
+
+        /// <summary>
+        /// Control pnlRegistro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlRegistro;
 
         /// <summary>
         /// Control pnlPerfil.
@@ -112,6 +103,24 @@ namespace EatMall.Vista
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnCerrarSesion;
+
+        /// <summary>
+        /// Control btnCarrito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnCarrito;
+
+        /// <summary>
+        /// Control lblCantidadCarrito.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCantidadCarrito;
 
         /// <summary>
         /// Control ContentPlaceHolder1.

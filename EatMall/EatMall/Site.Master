@@ -12,14 +12,69 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .logo-navbar {
+            height: 50px; /* Ajusta este valor según tu gusto */
+            width: auto; /* Mantiene la proporción original */
+            margin-left: 90px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+            .logo-navbar:hover {
+                transform: scale(1.05); /* Un pequeño efecto al pasar el mouse */
+            }
+
+        .btn-flotante-carrito {
+            position: fixed;
+            bottom: 40px; /* Distancia desde abajo */
+            right: 40px; /* Distancia desde la derecha */
+            width: 65px;
+            height: 65px;
+            background-color: #fffa00; /* Color warning de Bootstrap */
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            z-index: 1000; /* Para que siempre esté encima de todo */
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-decoration: none;
+            border: none;
+        }
+
+            .btn-flotante-carrito:hover {
+                transform: scale(1.1);
+                background-color: #e0a800;
+                color: #000;
+            }
+
+            /* Estilo para el badge (contador) sobre el círculo */
+            .btn-flotante-carrito .badge {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                font-size: 0.8rem;
+                padding: 0.4em 0.6em;
+                border: 2px solid white;
+            }
+    </style>
 </head>
+
 <body>
     <form id="form1" runat="server">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-            <div class="container d-flex align-items-center gap-3">
-                <a class="navbar-brand fw-bold" href="/Index.aspx">EatMall</a>
 
+
+
+
+            <div class="container d-flex align-items-center gap-3">
+
+                <a class="navbar-brand fw-bold" href="/Index.aspx">
+                    <img src="/Vista/Assets/Img/LogoEatMall.png" alt="EatMall" class="logo-navbar" />
+                </a>
                 <asp:Panel ID="pnlBuscador" runat="server" DefaultButton="btnBuscar" CssClass="flex-grow-1" Style="max-width: 500px;">
                     <div class="input-group">
                         <span class="input-group-text" style="border-radius: 50px 0 0 50px; background-color: #f1f3f4; border: none; padding-left: 20px;">
@@ -43,20 +98,20 @@
 
                 <ul class="navbar-nav ms-auto align-items-center">
 
-                    <li class="nav-item me-3">
-                        <asp:LinkButton ID="btnCarrito" runat="server" PostBackUrl="~/Vista/Pedido/Carritos.aspx" CssClass="text-decoration-none">
-                            <span class="fw-semibold">🛒 
-            <span class="badge bg-danger rounded-pill">
-                <asp:Label ID="lblCantidadCarrito" runat="server" Text="0" />
-            </span>
-                            </span>
-                        </asp:LinkButton>
-                    </li>
+
 
                     <asp:Panel ID="pnlLogin" runat="server" Visible="true">
                         <li class="nav-item">
                             <a class="nav-link d-flex align-items-center fw-medium" href="/Vista/Auth/Login.aspx">
                                 <i class="bi bi-person-circle me-2"></i>Iniciar Sesión
+                            </a>
+                        </li>
+                    </asp:Panel>
+
+                    <asp:Panel ID="pnlRegistro" runat="server" Visible="true">
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center fw-medium" href="/Vista/Auth/Registro.aspx">
+                                <i class="bi bi-person-add me-2"></i>Registrarse
                             </a>
                         </li>
                     </asp:Panel>
@@ -93,6 +148,14 @@
                 </ul>
             </div>
         </nav>
+        <asp:LinkButton ID="btnCarrito" runat="server"
+            PostBackUrl="~/Vista/Pedido/Carritos.aspx"
+            CssClass="btn-flotante-carrito shadow-lg">
+            <i class="bi bi-cart3"></i>
+            <span class="badge rounded-pill bg-danger">
+                <asp:Label ID="lblCantidadCarrito" runat="server" Text="0" />
+            </span>
+        </asp:LinkButton>
 
         <main class="container mt-4">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />

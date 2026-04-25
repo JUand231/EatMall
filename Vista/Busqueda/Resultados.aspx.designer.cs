@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace EatMall.Vista.Pago
+namespace EatMall.Vista.Busqueda
 {
 
 
-    public partial class MetodosPago
+    public partial class Resultados
     {
 
         /// <summary>
@@ -24,30 +24,30 @@ namespace EatMall.Vista.Pago
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control hfMetodoPago.
+        /// Control rptLocales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfMetodoPago;
+        protected global::System.Web.UI.WebControls.Repeater rptLocales;
 
         /// <summary>
-        /// Control rptMetodos.
+        /// Control rptProductos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptMetodos;
+        protected global::System.Web.UI.WebControls.Repeater rptProductos;
 
         /// <summary>
-        /// Control btnContinuar.
+        /// Control rptCentros.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnContinuar;
+        protected global::System.Web.UI.WebControls.Repeater rptCentros;
     }
 }

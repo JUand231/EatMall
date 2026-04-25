@@ -14,6 +14,10 @@ namespace EatMall.Modelo
         public string Email { get; set; }
         public string Telefono { get; set; }
         public string Contraseña { get; set; }
+<<<<<<< HEAD
+        public bool Estado { get; set; }
+=======
         public string Estado { get; set; }
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
     }
 }

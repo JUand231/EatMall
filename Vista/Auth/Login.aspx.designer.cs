@@ -24,6 +24,27 @@ namespace EatMall.Vista.Auth
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+<<<<<<< HEAD
+        /// Control ScriptManager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
+        /// Control btnVolver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnVolver;
+
+        /// <summary>
+=======
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
         /// Control txtEmail.
         /// </summary>
         /// <remarks>
@@ -42,6 +63,8 @@ namespace EatMall.Vista.Auth
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
+<<<<<<< HEAD
+=======
         /// Control lblMensaje.
         /// </summary>
         /// <remarks>
@@ -51,6 +74,7 @@ namespace EatMall.Vista.Auth
         protected global::System.Web.UI.WebControls.Label lblMensaje;
 
         /// <summary>
+>>>>>>> 76119a2f89d22700a490fdef95ffddad2fc193c0
         /// Control btnIngresar.
         /// </summary>
         /// <remarks>
