@@ -15,13 +15,13 @@ namespace EatMall.Vista
             if (Session["IdCliente"] != null)
             {
                 pnlLogin.Visible = false;
-                pnlPerfil.Visible = true;
+                liPerfil.Visible = true;
                 lblNombreUsuario.Text = Session["NombreCliente"].ToString();
             }
             else
             {
                 pnlLogin.Visible = true;
-                pnlPerfil.Visible = false;
+                liPerfil.Visible = false;
             }
         }
         protected void btnBuscar_Click(object sender, EventArgs e)
