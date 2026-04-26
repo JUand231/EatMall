@@ -7,15 +7,13 @@ using EatMall.Modelo;
 
 namespace EatMall.Logica
 {
-    public class LoginL
-    {
-        public Cliente MtLoginC(UsuarioLogin oDatos)
-        {
-            LoginD oLoginD = new LoginD();
-            Cliente oDatosUser = oLoginD.MtLoginC(oDatos);
-            return oDatosUser;
-        }
-    
-        
-    }
+	public class LoginL
+	{
+		public UsuarioLogin MtLogin(UsuarioLogin oDatosSesion, string tipoUsuario)
+		{
+			LoginD oLoginD = new LoginD();
+			return oLoginD.MtLogin(oDatosSesion, tipoUsuario);
+
+		}
+	}
 }

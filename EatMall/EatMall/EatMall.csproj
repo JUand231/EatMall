@@ -127,6 +127,10 @@
     <Content Include="Vista\Pago\Recibo.aspx" />
     <Content Include="Vista\Plazoleta\Plazoleta.aspx" />
     <Content Include="Vista\Local\Tienda.aspx" />
+    <Content Include="Vista\Usuario\Administrador.aspx" />
+    <Content Include="Vista\Usuario\AdministradorCC.aspx" />
+    <Content Include="Vista\Usuario\AdminLocal.aspx" />
+    <Content Include="Vista\Usuario\Cajero.aspx" />
     <Content Include="Vista\Usuario\Perfil.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -137,6 +141,7 @@
     <Compile Include="Datos\ConexionDB.cs" />
     <Compile Include="Datos\LocalD.cs" />
     <Compile Include="Datos\LoginD.cs" />
+    <Compile Include="Datos\MenuD.cs" />
     <Compile Include="Datos\MetodoPagoD.cs" />
     <Compile Include="Datos\PedidoD.cs" />
     <Compile Include="Datos\PlazoletaD.cs" />
@@ -172,15 +177,24 @@
     <Compile Include="Modelo\DetallePedido.cs" />
     <Compile Include="Modelo\HorarioLocal.cs" />
     <Compile Include="Modelo\Local.cs" />
+    <Compile Include="Modelo\Menu.cs" />
     <Compile Include="Modelo\MetodoPago.cs" />
     <Compile Include="Modelo\Pedido.cs" />
     <Compile Include="Modelo\Plazoleta.cs" />
     <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Modelo\Promocion.cs" />
+    <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Transaccion.cs" />
     <Compile Include="Modelo\UsuarioLogin.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vista\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Auth\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,6 +279,34 @@
     <Compile Include="Vista\Local\Tienda.aspx.designer.cs">
       <DependentUpon>Tienda.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Usuario\Administrador.aspx.cs">
+      <DependentUpon>Administrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Usuario\Administrador.aspx.designer.cs">
+      <DependentUpon>Administrador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Usuario\AdministradorCC.aspx.cs">
+      <DependentUpon>AdministradorCC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Usuario\AdministradorCC.aspx.designer.cs">
+      <DependentUpon>AdministradorCC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Usuario\AdminLocal.aspx.cs">
+      <DependentUpon>AdminLocal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Usuario\AdminLocal.aspx.designer.cs">
+      <DependentUpon>AdminLocal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Usuario\Cajero.aspx.cs">
+      <DependentUpon>Cajero.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Usuario\Cajero.aspx.designer.cs">
+      <DependentUpon>Cajero.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Usuario\Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -292,6 +334,7 @@
     <Content Include="obj\Debug\EatMall.csproj.Up2Date" />
     <Content Include="Site.Master" />
     <None Include="packages.config" />
+    <Content Include="Vista\Admin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

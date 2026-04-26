@@ -44,6 +44,14 @@
 					<a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
 				</div>
 
+				<div class="form-check form-switch d-flex align-items-center justify-content-center gap-2 mb-4">
+					<asp:CheckBox ID="chkTipo" runat="server" Checked="true" CssClass="custom-switch" />
+					<label class="form-check-label text-muted small fw-bold" style="cursor: pointer;" for="chkTipo">MODO FUNCIONARIO</label>
+				</div>
+
+				<div class="form-label mb-3">
+					<asp:Label ID="lblMensaje" runat="server" Text=""></asp:Label>
+				</div>
 				<asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn-ingresar" OnClick="btnIngresar_Click" />
 
 				<div class="register-link mt-4">

@@ -6,89 +6,104 @@ using System.Data.SqlClient;
 
 namespace EatMall.Datos
 {
-    public class ClienteD
-    {
-        public Cliente ObtenerClientePorId(int id)
-        {
-            Cliente oCliente = null;
-            using (SqlConnection cn = ConexionDB.MtAbrirConexion())
-            {
-                cn.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT Id, Nombre, Apellido, Documento, Email, Telefono FROM Usuario WHERE Id = @Id", cn))
-                {
-                    cmd.Parameters.AddWithValue("@Id", id);
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        if (dr.Read())
-                        {
-                            oCliente = new Cliente()
-                            {
-                                Id = Convert.ToInt32(dr["Id"]),
-                                Nombre = dr["Nombre"].ToString(),
-                                Apellido = dr["Apellido"].ToString(),
-                                Documento = dr["Documento"].ToString(),
-                                Email = dr["Email"].ToString(),
-                                Telefono = dr["Telefono"].ToString()
-                            };
-                        }
-                    }
-                }
-            }
-            return oCliente;
-        }
+	public class ClienteD
+	{
+		public bool ActualizarCliente(Cliente oCliente)
+		{
+			using (SqlConnection cn = ConexionDB.MtAbrirConexion())
+			{
+				cn.Open();
 
-        public bool ActualizarCliente(Cliente oCliente)
-        {
-            using (SqlConnection cn = ConexionDB.MtAbrirConexion())
-            {
-                cn.Open();
+				string consulta = string.IsNullOrEmpty(oCliente.Contraseña)
+					? "UPDATE Usuario SET Nombre=@Nombre, Apellido=@Apellido, Telefono=@Telefono WHERE Id=@Id"
+					: "UPDATE Usuario SET Nombre=@Nombre, Apellido=@Apellido, Telefono=@Telefono, Contraseña=@Contraseña WHERE Id=@Id";
 
-                string consulta = string.IsNullOrEmpty(oCliente.Contraseña)
-                    ? "UPDATE Usuario SET Nombre=@Nombre, Apellido=@Apellido, Telefono=@Telefono WHERE Id=@Id"
-                    : "UPDATE Usuario SET Nombre=@Nombre, Apellido=@Apellido, Telefono=@Telefono, Contraseña=@Contraseña WHERE Id=@Id";
+				using (SqlCommand cmd = new SqlCommand(consulta, cn))
+				{
+					cmd.Parameters.AddWithValue("@Nombre", oCliente.Nombre);
+					cmd.Parameters.AddWithValue("@Apellido", oCliente.Apellido);
+					cmd.Parameters.AddWithValue("@Telefono", oCliente.Telefono);
+					cmd.Parameters.AddWithValue("@Id", oCliente.Id);
 
-                using (SqlCommand cmd = new SqlCommand(consulta, cn))
-                {
-                    cmd.Parameters.AddWithValue("@Nombre", oCliente.Nombre);
-                    cmd.Parameters.AddWithValue("@Apellido", oCliente.Apellido);
-                    cmd.Parameters.AddWithValue("@Telefono", oCliente.Telefono);
-                    cmd.Parameters.AddWithValue("@Id", oCliente.Id);
+					if (!string.IsNullOrEmpty(oCliente.Contraseña))
+						cmd.Parameters.AddWithValue("@Contraseña", oCliente.Contraseña);
 
-                    if (!string.IsNullOrEmpty(oCliente.Contraseña))
-                        cmd.Parameters.AddWithValue("@Contraseña", oCliente.Contraseña);
+					return cmd.ExecuteNonQuery() > 0;
+				}
+			}
+		}
+		public List<Pedido> ObtenerPedidosPorCliente(int idCliente)
+		{
+			List<Pedido> lista = new List<Pedido>();
+			using (SqlConnection cn = ConexionDB.MtAbrirConexion())
+			{
+				cn.Open();
+				using (SqlCommand cmd = new SqlCommand(
+					"SELECT Id, CodigoPedido, FechaPedido, Estado, Total, TipoEntrega FROM Pedido WHERE IdCliente = @IdCliente ORDER BY FechaPedido DESC", cn))
+				{
+					cmd.Parameters.AddWithValue("@IdCliente", idCliente);
+					using (SqlDataReader dr = cmd.ExecuteReader())
+					{
+						while (dr.Read())
+						{
+							lista.Add(new Pedido()
+							{
+								Id = Convert.ToInt32(dr["Id"]),
+								CodigoPedido = dr["CodigoPedido"].ToString(),
+								FechaPedido = Convert.ToDateTime(dr["FechaPedido"]),
+								Estado = dr["Estado"].ToString(),
+								Total = Convert.ToDecimal(dr["Total"]),
+								TipoEntrega = dr["TipoEntrega"].ToString()
+							});
+						}
+					}
+				}
+			}
+			return lista;
+		}
 
-                    return cmd.ExecuteNonQuery() > 0;
-                }
-            }
-        }
-        public List<Pedido> ObtenerPedidosPorCliente(int idCliente)
-        {
-            List<Pedido> lista = new List<Pedido>();
-            using (SqlConnection cn = ConexionDB.MtAbrirConexion())
-            {
-                cn.Open();
-                using (SqlCommand cmd = new SqlCommand(
-                    "SELECT Id, CodigoPedido, FechaPedido, Estado, Total, TipoEntrega FROM Pedido WHERE IdCliente = @IdCliente ORDER BY FechaPedido DESC", cn))
-                {
-                    cmd.Parameters.AddWithValue("@IdCliente", idCliente);
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            lista.Add(new Pedido()
-                            {
-                                Id = Convert.ToInt32(dr["Id"]),
-                                CodigoPedido = dr["CodigoPedido"].ToString(),
-                                FechaPedido = Convert.ToDateTime(dr["FechaPedido"]),
-                                Estado = dr["Estado"].ToString(),
-                                Total = Convert.ToDecimal(dr["Total"]),
-                                TipoEntrega = dr["TipoEntrega"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
-            return lista;
-        }
-    }
+		public Cliente ObtenerClientePorId(int id)
+		{
+			Cliente oCliente = null;
+			using (SqlConnection cn = ConexionDB.MtAbrirConexion())
+			{
+				cn.Open();
+				string consulta = @"SELECT Id, Documento, Nombre, Apellido, Email, Telefono, Contraseña, Estado 
+									FROM Usuario WHERE Id = @Id";
+				using (SqlCommand cmd = new SqlCommand(consulta, cn))
+				{
+					cmd.Parameters.AddWithValue("@Id", id);
+					using (SqlDataReader dr = cmd.ExecuteReader())
+					{
+						if (dr.Read())
+						{
+							oCliente = new Cliente()
+							{
+								Id = Convert.ToInt32(dr["Id"]),
+								Documento = dr["Documento"] != DBNull.Value ? dr["Documento"].ToString() : string.Empty,
+								Nombre = dr["Nombre"] != DBNull.Value ? dr["Nombre"].ToString() : string.Empty,
+								Apellido = dr["Apellido"] != DBNull.Value ? dr["Apellido"].ToString() : string.Empty,
+								Email = dr["Email"] != DBNull.Value ? dr["Email"].ToString() : string.Empty,
+								Telefono = dr["Telefono"] != DBNull.Value ? dr["Telefono"].ToString() : string.Empty,
+							};
+							// Asignación segura de 'Estado' para soportar tanto bool como string en el modelo
+							var propEstado = typeof(Cliente).GetProperty("Estado");
+							if (propEstado != null && dr["Estado"] != DBNull.Value)
+							{
+								if (propEstado.PropertyType == typeof(bool))
+								{
+									propEstado.SetValue(oCliente, Convert.ToBoolean(dr["Estado"]));
+								}
+								else if (propEstado.PropertyType == typeof(string))
+								{
+									propEstado.SetValue(oCliente, dr["Estado"].ToString());
+								}
+							}
+						}
+					}
+				}
+			}
+			return oCliente;
+		}
+	}
 }

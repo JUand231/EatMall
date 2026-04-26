@@ -7,7 +7,13 @@ namespace EatMall.Modelo
 {
     public class UsuarioLogin
     {
-        public string Email { get; set; }
+        public int Id { get; set; }
+		public string Email { get; set; }
         public string Contraseña { get; set; }
-    }
+		public int Rol { get; set; }
+        public string Nombre { get; set; }
+		public string TipoUsuario { get; set; }
+
+        public string UrlInicio { get; set; }
+	}
 }

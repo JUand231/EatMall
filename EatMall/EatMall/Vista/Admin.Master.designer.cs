@@ -7,12 +7,21 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace EatMall.Vista.Auth
+namespace EatMall.Vista
 {
 
 
-    public partial class Login
+    public partial class Admin
     {
+
+        /// <summary>
+        /// Control head2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder head2;
 
         /// <summary>
         /// Control form1.
@@ -24,66 +33,39 @@ namespace EatMall.Vista.Auth
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control ScriptManager1.
+        /// Control lblUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.Label lblUsuario;
 
         /// <summary>
-        /// Control btnVolver.
+        /// Control lbCerrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnVolver;
+        protected global::System.Web.UI.WebControls.LinkButton lbCerrar;
 
         /// <summary>
-        /// Control txtEmail.
+        /// Control MenuRol.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MenuRol;
 
         /// <summary>
-        /// Control txtPassword.
+        /// Control ContentBody.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
-
-        /// <summary>
-        /// Control chkTipo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkTipo;
-
-        /// <summary>
-        /// Control lblMensaje.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensaje;
-
-        /// <summary>
-        /// Control btnIngresar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIngresar;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentBody;
     }
 }

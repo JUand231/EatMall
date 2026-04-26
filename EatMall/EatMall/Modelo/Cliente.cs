@@ -15,5 +15,6 @@ namespace EatMall.Modelo
         public string Telefono { get; set; }
         public string Contraseña { get; set; }
         public bool Estado { get; set; }
+        public Rol Rol { get; set; }
     }
 }
