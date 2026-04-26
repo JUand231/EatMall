@@ -23,10 +23,10 @@
             position: relative;
         }
 
-            .local-card:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-            }
+        .local-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
 
         .local-icono {
             width: 90px;
@@ -56,10 +56,10 @@
             transition: background 0.2s;
         }
 
-            .btn-ver-menu:hover {
-                background-color: #a93226;
-                color: white;
-            }
+        .btn-ver-menu:hover {
+            background-color: #a93226;
+            color: white;
+        }
 
         .btn-cerrado {
             background-color: #e5e7eb;
@@ -131,40 +131,60 @@
                     CssClass="btn btn-outline-dark btn-sm" />
             </div>
 
-            <h2 class="page-title mt-3">Locales Disponibles</h2>
-            <p class="page-subtitle">
-                Explora los locales disponibles en esta plazoleta.
-            </p>
+            <!-- CAROUSEL -->
+            <div id="carouselEatMall" class="carousel slide mb-5 shadow-lg" data-bs-ride="carousel" style="border-radius: 15px; overflow: hidden;">
+                <div class="carousel-inner">
+                    <asp:Repeater ID="rptCarousel" runat="server">
+                        <ItemTemplate>
+                            <div class="carousel-item <%# Container.ItemIndex == 0 ? "active" : "" %>">
+                                <div style="height: 320px; background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('<%# Eval("Imagen") %>'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
+                                    <div>
+                                        <span style="background-color: #c0392b; color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Promoción</span>
+                                        <h2 class="fw-bold mt-2 mb-1" style="font-size: 2rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.5);"><%# Eval("Nombre") %></h2>
+                                        <p style="font-size: 1.3rem; font-weight: 600; color: #fbbf24;">$<%# Eval("Total", "{0:N0}") %></p>
+                                        <a href='<%# "/Vista/Local/Tienda.aspx?idLocal=" + Eval("IdLocal") + "&idPlazoleta=" + Eval("IdPlazoleta") + "&idCC=" + Request.QueryString["idCC"] %>'
+                                            style="display: inline-block; margin-top: 12px; background-color: #c0392b; color: white; padding: 10px 28px; border-radius: 25px; font-weight: 600; text-decoration: none;">Ver Promoción
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselEatMall" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselEatMall" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
 
+            <!-- TITULO -->
+            <h4 class="mb-3 mt-2" style="font-weight: 700; color: #1a1a1a;">Locales</h4>
+
+            <!-- LOCALES -->
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
                 <asp:Repeater ID="rptLocales" runat="server">
                     <ItemTemplate>
-
                         <div class="col">
                             <div class="local-card">
 
-                                <!-- Calificación -->
                                 <div class="calificacion">
                                     ★ <%# string.Format("{0:0.0}", Convert.ToDouble(Eval("Promedio"))) %>
                                 </div>
 
                                 <div class="local-wrapper">
-
                                     <asp:Image ID="imgLocal"
                                         runat="server"
                                         ImageUrl='<%# string.IsNullOrEmpty(Eval("Imagen").ToString()) ? "~/img/default-local.png" : Eval("Imagen").ToString() %>'
                                         CssClass="local-icono"
                                         AlternateText='<%# Eval("Nombre") %>' />
 
-                                    <!-- Estado -->
-                                    <span class='estado-local <%# Eval("Estado").ToString() == "Abierto" ? "abierto" : "cerrado" %>'
+                                    <span class='estado-local <%# Eval("Estado").ToString().Trim() == "Abierto" ? "abierto" : "cerrado" %>'
                                         title='<%# Eval("Estado") %>'></span>
-
                                 </div>
 
-                                <p class="local-nombre">
-                                    <%# Eval("Nombre") %>
-                                </p>
+                                <p class="local-nombre"><%# Eval("Nombre") %></p>
 
                                 <!-- Botón -->
                                 <%# Eval("Estado").ToString().Trim() == "Abierto"
@@ -173,9 +193,9 @@
                                       "&idCC=" + Request.QueryString["idCC"] +
                                       "' class='btn-ver-menu d-block text-decoration-none text-center'>Ver Menú</a>"
                                     : "<button class='btn-cerrado' disabled>Cerrado</button>" %>
+
                             </div>
                         </div>
-
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
@@ -187,5 +207,6 @@
 
         </div>
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

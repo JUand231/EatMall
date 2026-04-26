@@ -46,7 +46,7 @@
                                 <img src='<%# Eval("Imagen") %>'
                                     class="card-img-top"
                                     style="height: 150px; object-fit: cover;"
-                                    onerror="this.src='Vista/Assets/Img/CCDefault.png'" />
+                                    onerror="this.src='Vista/Assets/Img/HeroPlazoleta.png'" />
 
                                 <div class="card-body d-flex flex-column">
 

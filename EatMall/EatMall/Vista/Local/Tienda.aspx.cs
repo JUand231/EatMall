@@ -30,6 +30,11 @@ namespace EatMall.Vista.Local
 
                     CargarInformacionLocal(idLocal);
                 }
+                else if (Session["IdLocal"] != null)
+                {
+                    int idLocal = (int)Session["IdLocal"] ;
+                    CargarInformacionLocal(idLocal);
+                }
 
                 CargarProductos();
             }

@@ -9,6 +9,7 @@ namespace EatMall.Vista.Pago
     public partial class Local : Page
     {
         LocalL localL = new LocalL();
+        PromocionL promocionL = new PromocionL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,6 +41,14 @@ namespace EatMall.Vista.Pago
 
             rptLocales.DataSource = lista;
             rptLocales.DataBind();
+
+            
+            rptCarousel.DataSource = promocionL.MtListarPromocionesPorPlazoleta(idPlazoleta);
+            rptCarousel.DataBind();
         }
+
+       
+        
     }
+             
 }

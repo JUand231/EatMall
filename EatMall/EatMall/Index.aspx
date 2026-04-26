@@ -11,6 +11,7 @@
             width: 100%;
             border-radius: 12px;
         }
+
         .hero-text {
             position: absolute;
             top: 50%;
@@ -20,80 +21,96 @@
             text-align: center;
             width: 100%;
         }
-        .card { border-radius: 12px; overflow: hidden; width: 100%; }
-        .card img { border-radius: 10px; }
-        .card-body h5 { font-size: 16px; }
+
+        .card {
+            border-radius: 12px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .card img {
+                border-radius: 10px;
+            }
+
+        .card-body h5 {
+            font-size: 16px;
+        }
+
         .btn-custom {
             background-color: #e7c7a5;
             color: #000;
             border-radius: 10px;
             font-weight: 500;
         }
-        .btn-custom:hover { opacity: 0.9; }
+
+            .btn-custom:hover {
+                opacity: 0.9;
+            }
     </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div class="container mt-4">
+    <div class="container mt-4">
 
-   
-   
 
-    <!-- CAROUSEL -->
-    <div id="carouselEatMall" class="carousel slide mb-5 shadow-lg" data-bs-ride="carousel" style="border-radius:15px; overflow:hidden;">
-        <div class="carousel-inner">
-            <asp:Repeater ID="rptCarousel" runat="server">
+
+
+        <!-- CAROUSEL -->
+        <div id="carouselEatMall" class="carousel slide mb-5 shadow-lg" data-bs-ride="carousel" style="border-radius: 15px; overflow: hidden;">
+            <div class="carousel-inner">
+                <asp:Repeater ID="rptCarousel" runat="server">
+                    <ItemTemplate>
+                        <div class="carousel-item <%# Container.ItemIndex == 0 ? "active" : "" %>">
+                            <div class="hero-image" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%# Eval("Imagen") %>');">
+                                <div class="hero-text">
+                                    <h1 class="display-3 fw-bold"><%# Eval("Nombre") %></h1>
+                                    <p class="fs-4"><%# Eval("Ciudad.NombreCiudad") %> - <%# Eval("Ubicacion") %></p>
+                                    <a href='Vista/Plazoleta/Plazoleta.aspx?id=<%# Eval("Id") %>' class="btn btn-light btn-lg px-5 py-3 rounded-pill fw-bold">Explorar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselEatMall" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselEatMall" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+      
+
+        <!-- TITULO -->
+         <h4 class="mb-3 mt-2" style="font-weight: 700; color: #1a1a1a;">Centros Comerciales</h4>
+
+        <!-- LISTADO -->
+        <div class="row">
+            <asp:Repeater ID="rptCentrosComerciales" runat="server">
                 <ItemTemplate>
-                    <div class="carousel-item <%# Container.ItemIndex == 0 ? "active" : "" %>">
-                        <div class="hero-image" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%# Eval("Imagen") %>');">
-                            <div class="hero-text">
-                                <h1 class="display-3 fw-bold"><%# Eval("Nombre") %></h1>
-                                <p class="fs-4"><%# Eval("Ciudad.NombreCiudad") %> - <%# Eval("Ubicacion") %></p>
-                                <a href='Vista/Plazoleta/Plazoleta.aspx?id=<%# Eval("Id") %>' class="btn btn-light btn-lg px-5 py-3 rounded-pill fw-bold">Explorar</a>
+                    <div class="col-lg-3 col-md-3 mb-4">
+                        <div class="card shadow-sm p-3 h-100 position-relative">
+                            <img src='<%# Eval("Imagen") %>'
+                                class="card-img-top"
+                                style="height: 150px; object-fit: cover;"
+                                onerror="this.src='Vista/Assets/Img/CCDefault.png'" />
+                            <div class="card-body text-start">
+                                <h5 class="fw-bold"><%# Eval("Nombre") %></h5>
+                                <p class="text-muted mb-1">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                    <%# Eval("Ciudad.NombreCiudad") %> - 
+                                <%# Eval("Ciudad.Departamento.Nombre") %>
+                                </p>
+                                <p class="small text-secondary"><%# Eval("Ubicacion") %></p>
+                                <a href='Vista/Plazoleta/Plazoleta.aspx?id=<%# Eval("Id") %>' class="btn btn-custom w-100 mt-2">Ver Detalles
+                                </a>
                             </div>
                         </div>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselEatMall" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselEatMall" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
+
     </div>
-
-    <!-- TITULO -->
-    <h4 class="mb-4">Centros Comerciales</h4>
-
-    <!-- LISTADO -->
-    <div class="row">
-        <asp:Repeater ID="rptCentrosComerciales" runat="server">
-            <ItemTemplate>
-                <div class="col-lg-3 col-md-3 mb-4">
-                    <div class="card shadow-sm p-3 h-100 position-relative">
-                        <img src='<%# Eval("Imagen") %>'
-                             class="card-img-top"
-                             style="height:150px; object-fit:cover;"
-                             onerror="this.src='Vista/Assets/Img/CCDefault.png'" />
-                        <div class="card-body text-start">
-                            <h5 class="fw-bold"><%# Eval("Nombre") %></h5>
-                            <p class="text-muted mb-1">
-                                <i class="bi bi-geo-alt-fill"></i>
-                                <%# Eval("Ciudad.NombreCiudad") %> - 
-                                <%# Eval("Ciudad.Departamento.Nombre") %>
-                            </p>
-                            <p class="small text-secondary"><%# Eval("Ubicacion") %></p>
-                            <a href='Vista/Plazoleta/Plazoleta.aspx?id=<%# Eval("Id") %>' class="btn btn-custom w-100 mt-2">
-                                Ver Detalles
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </ItemTemplate>
-        </asp:Repeater>
-    </div>
-
-</div>
 </asp:Content>
