@@ -40,7 +40,7 @@
         }
 
         .btn-ver-menu {
-            background-color: #c0392b;
+            background-color: #F27F0D;
             color: white;
             border: none;
             border-radius: 8px;
@@ -55,7 +55,7 @@
         }
 
         .btn-ver-menu:hover {
-            background-color: #a93226;
+            background-color: #F27F0D;
             color: white;
         }
 

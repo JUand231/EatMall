@@ -13,7 +13,7 @@
         /* BOTÓN TOGGLE FIJO */
         .btn-toggle-sidebar {
             position: fixed;
-            top: 62px;
+            top: 76px;
             left: 0;
             z-index: 200;
             background: white;
@@ -35,10 +35,10 @@
         /* SIDEBAR */
         .sidebar-local {
             position: fixed;
-            top: 56px;
+            top: 72px;
             left: 0;
             width: 320px;
-            height: calc(100vh - 56px);
+            height: calc(100vh - 72px);
             background: white;
             padding: 20px;
             overflow-y: auto;
@@ -175,6 +175,7 @@
                                         Style="width: 60px" TextMode="Number" min="1" />
                                     <asp:Button runat="server" Text="Agregar"
                                         CssClass="btn btn-primary btn-sm"
+                                        Style="background-color: #FFA94D; color: white; border: none;"
                                         CommandName="AgregarCarrito"
                                         CommandArgument='<%# Eval("Id") %>' />
                                 </div>

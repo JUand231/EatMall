@@ -1,5 +1,5 @@
 <%@ Page Language="C#" AutoEventWireup="true"
-    CodeBehind="Plazoletas.aspx.cs"
+    CodeBehind="Plazoleta.aspx.cs"
     Inherits="EatMall.Vista.Plazoletas"
     MasterPageFile="~/Site.Master" %>
 
@@ -12,7 +12,7 @@
         <div class="d-flex align-items-center mb-4">
             <asp:HyperLink ID="btnVolverIndex"
                 runat="server"
-                Text="← Volver"
+                Text="&larr; Volver"
                 CssClass="btn btn-outline-dark btn-sm me-3" />
 
             <h4 class="mb-0">Plazoletas</h4>
@@ -48,7 +48,8 @@
                                 <asp:Button ID="btnSeleccionar"
                                     runat="server"
                                     Text="Seleccionar"
-                                    CssClass="btn btn-primary btn-sm w-100 mt-auto"
+                                    CssClass="btn btn-sm w-100 mt-auto fw-bold"
+                                    Style="background-color: #F27F0D; color: white; border: none;"
                                     CommandArgument='<%# Eval("Id") %>'
                                     OnClick="btnSeleccionar_Click" />
 

@@ -10,7 +10,7 @@ namespace EatMall.Vista.Pago
             {
                 if (Session["IdTransaccion"] == null)
                 {
-                    Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
+                    Response.Redirect("~/Vista/Pago/MetodosPago.aspx");
                     return;
                 }
 
@@ -24,7 +24,24 @@ namespace EatMall.Vista.Pago
 
         protected void btnInicio_Click(object sender, EventArgs e)
         {
-            Session.Clear();
+            var idCliente = Session["IdCliente"];
+            var nombreCliente = Session["NombreCliente"];
+
+            // Limpiar solo los datos del pedido
+            Session.Remove("Total");
+            Session.Remove("MetodoPago");
+            Session.Remove("NombreMetodoPago");
+            Session.Remove("IdTransaccion");
+            Session.Remove("CodigoPedido");
+            Session.Remove("Carrito");
+            Session.Remove("IdLocal");
+            Session.Remove("IdPlazoleta");
+            Session.Remove("IdCC");
+
+            // Restaurar datos del usuario
+            Session["IdCliente"] = idCliente;
+            Session["NombreCliente"] = nombreCliente;
+            
             Response.Redirect("~/Index.aspx");
         }
     }

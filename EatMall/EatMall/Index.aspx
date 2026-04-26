@@ -28,24 +28,14 @@
             width: 100%;
         }
 
-        .card img {
-            border-radius: 10px;
-        }
+            .card img {
+                border-radius: 10px;
+            }
 
         .card-body h5 {
             font-size: 16px;
         }
 
-        .btn-custom {
-            background-color: #e7c7a5;
-            color: #000;
-            border-radius: 10px;
-            font-weight: 500;
-        }
-
-        .btn-custom:hover {
-            opacity: 0.9;
-        }
     </style>
 </asp:Content>
 
@@ -55,9 +45,9 @@
 
         <!-- CAROUSEL -->
         <div id="carouselEatMall"
-             class="carousel slide mb-5 shadow-lg"
-             data-bs-ride="carousel"
-             style="border-radius: 15px; overflow: hidden;">
+            class="carousel slide mb-5 shadow-lg"
+            data-bs-ride="carousel"
+            style="border-radius: 15px; overflow: hidden;">
 
             <div class="carousel-inner">
                 <asp:Repeater ID="rptCarousel" runat="server">
@@ -65,7 +55,7 @@
                         <div class="carousel-item <%# Container.ItemIndex == 0 ? "active" : "" %>">
 
                             <div class="hero-image"
-                                 style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%# Eval("Imagen") %>');">
+                                style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%# Eval("Imagen") %>');">
 
                                 <div class="hero-text">
                                     <h1 class="display-3 fw-bold">
@@ -78,9 +68,9 @@
                                     </p>
 
                                     <a href='Vista/Plazoleta/Plazoleta.aspx?id=<%# Eval("Id") %>'
-                                       class="btn btn-light btn-lg px-5 py-3 rounded-pill fw-bold">
-                                        Explorar
-                                    </a>
+                                        class="btn btn-lg px-5 py-3 rounded-pill fw-bold"
+                                        style="background-color: #F27F0D; color: white; border: none;">Explorar
+</a>
                                 </div>
 
                             </div>
@@ -90,24 +80,23 @@
             </div>
 
             <button class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carouselEatMall"
-                    data-bs-slide="prev">
+                type="button"
+                data-bs-target="#carouselEatMall"
+                data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </button>
 
             <button class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carouselEatMall"
-                    data-bs-slide="next">
+                type="button"
+                data-bs-target="#carouselEatMall"
+                data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </button>
         </div>
 
         <!-- TITULO -->
         <h4 class="mb-3 mt-2"
-            style="font-weight: 700; color: #1a1a1a;">
-            Centros Comerciales
+            style="font-weight: 700; color: #1a1a1a;">Centros Comerciales
         </h4>
 
         <!-- LISTADO -->
@@ -120,9 +109,9 @@
                         <div class="card shadow-sm p-3 h-100 position-relative">
 
                             <img src='<%# Eval("Imagen") %>'
-                                 class="card-img-top"
-                                 style="height: 150px; object-fit: cover;"
-                                 onerror="this.src='Vista/Assets/Img/CCDefault.png'" />
+                                class="card-img-top"
+                                style="height: 150px; object-fit: cover;"
+                                onerror="this.src='Vista/Assets/Img/CCDefault.png'" />
 
                             <div class="card-body text-start">
 
@@ -141,8 +130,8 @@
                                 </p>
 
                                 <a href='Vista/Plazoleta/Plazoleta.aspx?id=<%# Eval("Id") %>'
-                                   class="btn btn-custom w-100 mt-2">
-                                    Ver Detalles
+                                    class="btn w-100 mt-2 fw-bold"
+                                    style="background-color: #F27F0D; color: white; border: none;">Ver Detalles
                                 </a>
 
                             </div>

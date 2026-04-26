@@ -13,11 +13,16 @@ namespace EatMall.Vista.Local
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
-                string idPlazoleta = Request.QueryString["idPlazoleta"];
-                string idCC = Request.QueryString["idCC"];
+                if (!string.IsNullOrEmpty(Request.QueryString["idPlazoleta"]))
+                    Session["IdPlazoleta"] = Request.QueryString["idPlazoleta"];
+
+                if (!string.IsNullOrEmpty(Request.QueryString["idCC"]))
+                    Session["IdCC"] = Request.QueryString["idCC"];
+
+                string idPlazoleta = Request.QueryString["idPlazoleta"] ?? Session["IdPlazoleta"]?.ToString();
+                string idCC = Request.QueryString["idCC"] ?? Session["IdCC"]?.ToString();
 
                 btnVolverLocal.NavigateUrl =
                     "~/Vista/Local/Local.aspx?idPlazoleta=" + idPlazoleta + "&idCC=" + idCC;
@@ -25,14 +30,12 @@ namespace EatMall.Vista.Local
                 if (!string.IsNullOrEmpty(Request.QueryString["idLocal"]))
                 {
                     int idLocal = Convert.ToInt32(Request.QueryString["idLocal"]);
-
                     Session["IdLocal"] = idLocal;
-
                     CargarInformacionLocal(idLocal);
                 }
                 else if (Session["IdLocal"] != null)
                 {
-                    int idLocal = (int)Session["IdLocal"] ;
+                    int idLocal = (int)Session["IdLocal"];
                     CargarInformacionLocal(idLocal);
                 }
 
