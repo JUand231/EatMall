@@ -123,7 +123,7 @@
     <Content Include="Vista\Pedido\ConfirmarPedido.aspx" />
     <Content Include="Vista\Local\Local.aspx" />
     <Content Include="Vista\Pago\ConfirmacionPago.aspx" />
-    <Content Include="Vista\Pago\MetodoPago.aspx" />
+    <Content Include="Vista\Pago\MetodosPago.aspx" />
     <Content Include="Vista\Pago\Recibo.aspx" />
     <Content Include="Vista\Plazoleta\Plazoleta.aspx" />
     <Content Include="Vista\Local\Tienda.aspx" />
@@ -131,6 +131,7 @@
     <Content Include="Vista\Usuario\AdministradorCC.aspx" />
     <Content Include="Vista\Usuario\AdminLocal.aspx" />
     <Content Include="Vista\Usuario\Cajero.aspx" />
+    <Content Include="Vista\Usuario\DetallesPedidos.aspx" />
     <Content Include="Vista\Usuario\Perfil.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -139,6 +140,7 @@
     <Compile Include="Datos\CentroComercialD.cs" />
     <Compile Include="Datos\ClienteD.cs" />
     <Compile Include="Datos\ConexionDB.cs" />
+    <Compile Include="Datos\DetallePedidoD.cs" />
     <Compile Include="Datos\LocalD.cs" />
     <Compile Include="Datos\LoginD.cs" />
     <Compile Include="Datos\MenuD.cs" />
@@ -160,6 +162,7 @@
     <Compile Include="Logica\CarritoL.cs" />
     <Compile Include="Logica\CentroComercialL.cs" />
     <Compile Include="Logica\ClienteL.cs" />
+    <Compile Include="Logica\DetallePedidoL.cs" />
     <Compile Include="Logica\LocalL.cs" />
     <Compile Include="Logica\LoginL.cs" />
     <Compile Include="Logica\MetodoPagoL.cs" />
@@ -169,6 +172,7 @@
     <Compile Include="Logica\PromocionL.cs" />
     <Compile Include="Logica\RegistroL.cs" />
     <Compile Include="Logica\TransaccionL.cs" />
+    <Compile Include="Modelo\Calificacion.cs" />
     <Compile Include="Modelo\Carrito.cs" />
     <Compile Include="Modelo\CentroComercial.cs" />
     <Compile Include="Modelo\Ciudad.cs" />
@@ -186,7 +190,6 @@
     <Compile Include="Modelo\Rol.cs" />
     <Compile Include="Modelo\Transaccion.cs" />
     <Compile Include="Modelo\UsuarioLogin.cs" />
-    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vista\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
@@ -244,12 +247,12 @@
     <Compile Include="Vista\Pago\ConfirmacionPago.aspx.designer.cs">
       <DependentUpon>ConfirmacionPago.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vista\Pago\MetodoPago.aspx.cs">
-      <DependentUpon>MetodoPago.aspx</DependentUpon>
+    <Compile Include="Vista\Pago\MetodosPago.aspx.cs">
+      <DependentUpon>MetodosPago.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vista\Pago\MetodoPago.aspx.designer.cs">
-      <DependentUpon>MetodoPago.aspx</DependentUpon>
+    <Compile Include="Vista\Pago\MetodosPago.aspx.designer.cs">
+      <DependentUpon>MetodosPago.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Pago\Recibo.aspx.cs">
       <DependentUpon>Recibo.aspx</DependentUpon>
@@ -306,6 +309,13 @@
     </Compile>
     <Compile Include="Vista\Usuario\Cajero.aspx.designer.cs">
       <DependentUpon>Cajero.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Usuario\DetallesPedidos.aspx.cs">
+      <DependentUpon>DetallesPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Usuario\DetallesPedidos.aspx.designer.cs">
+      <DependentUpon>DetallesPedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vista\Usuario\Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>

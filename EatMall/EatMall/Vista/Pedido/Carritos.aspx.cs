@@ -50,13 +50,13 @@ namespace EatMall.Vista.Pedido
         {
             if (Session["IdCliente"] == null)
             {
-                // Guardamos la URL actual para que, tras el login, el usuario pueda volver aquí
+                
                 string urlRetorno = Request.Url.PathAndQuery;
                 Response.Redirect("~/Vista/Auth/Login.aspx?ReturnUrl=~/Vista/Pago/MetodoPago.aspx");
                 return;
             }
             Session["Total"] = carritoL.ObtenerTotal();
-            Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
+            Response.Redirect("~/Vista/Pago/MetodosPago.aspx");
         }
     }
 }

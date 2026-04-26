@@ -122,6 +122,12 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="text-end mt-2">
+                            <a href='<%# "/Vista/Usuario/DetallesPedidos.aspx?id=" + Eval("Id") %>'
+                                class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-eye me-1"></i>Ver detalle
+                            </a>
+                        </div>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>

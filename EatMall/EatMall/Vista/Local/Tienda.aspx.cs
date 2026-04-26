@@ -9,19 +9,35 @@ namespace EatMall.Vista.Local
     {
         private ProductoL productoL = new ProductoL();
         private CarritoL carritoL = new CarritoL();
+        private LocalL localL = new LocalL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                string idPlazoleta = Request.QueryString["idPlazoleta"];
-                string idCC = Request.QueryString["idCC"];
+                if (!string.IsNullOrEmpty(Request.QueryString["idPlazoleta"]))
+                    Session["IdPlazoleta"] = Request.QueryString["idPlazoleta"];
+
+                if (!string.IsNullOrEmpty(Request.QueryString["idCC"]))
+                    Session["IdCC"] = Request.QueryString["idCC"];
+
+                string idPlazoleta = Request.QueryString["idPlazoleta"] ?? Session["IdPlazoleta"]?.ToString();
+                string idCC = Request.QueryString["idCC"] ?? Session["IdCC"]?.ToString();
 
                 btnVolverLocal.NavigateUrl =
                     "~/Vista/Local/Local.aspx?idPlazoleta=" + idPlazoleta + "&idCC=" + idCC;
 
                 if (!string.IsNullOrEmpty(Request.QueryString["idLocal"]))
-                    Session["IdLocal"] = Convert.ToInt32(Request.QueryString["idLocal"]);
+                {
+                    int idLocal = Convert.ToInt32(Request.QueryString["idLocal"]);
+                    Session["IdLocal"] = idLocal;
+                    CargarInformacionLocal(idLocal);
+                }
+                else if (Session["IdLocal"] != null)
+                {
+                    int idLocal = (int)Session["IdLocal"];
+                    CargarInformacionLocal(idLocal);
+                }
 
                 CargarProductos();
             }
@@ -30,6 +46,7 @@ namespace EatMall.Vista.Local
         private void CargarProductos()
         {
             int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
+
             rptProductos.DataSource = productoL.ObtenerProductos(idLocal);
             rptProductos.DataBind();
         }
@@ -38,19 +55,52 @@ namespace EatMall.Vista.Local
         {
             if (e.CommandName == "AgregarCarrito")
             {
-                int id = Convert.ToInt32(e.CommandArgument);
+                int idProducto = Convert.ToInt32(e.CommandArgument);
                 int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
 
                 TextBox txtCantidad = (TextBox)e.Item.FindControl("txtCantidad");
+
                 int cantidad = 1;
-                if (txtCantidad != null && int.TryParse(txtCantidad.Text, out int cant) && cant > 0)
+
+                if (txtCantidad != null &&
+                    int.TryParse(txtCantidad.Text, out int cant) &&
+                    cant > 0)
+                {
                     cantidad = cant;
+                }
 
-                Producto producto = productoL.ObtenerProductos(idLocal).Find(p => p.Id == id);
+                Producto producto =
+                    productoL.ObtenerProductos(idLocal)
+                    .Find(p => p.Id == idProducto);
+
                 if (producto != null)
+                {
                     carritoL.AgregarProducto(producto, cantidad);
+                }
 
-                Response.Redirect(Request.Url.AbsolutePath + "?" + Request.QueryString);
+                Response.Redirect(Request.RawUrl);
+            }
+        }
+
+        private void CargarInformacionLocal(int idLocal)
+        {
+            Modelo.Local local = localL.ObtenerLocalPorId(idLocal);
+
+            if (local == null)
+            {
+                Response.Write("LOCAL NULL");
+            }
+
+            if (local != null)
+            {
+                imgLocalInfo.ImageUrl = local.Imagen;
+                lblNombreLocal.Text = local.Nombre;
+                lblDescripcionLocal.Text = local.Descripcion;
+                lblHorario.Text = local.HorarioLocal;
+                lblTelefono.Text = local.Telefono;
+                lblEmail.Text = local.Email;
+                lblEstado.Text = local.Estado;
+                lblCalificacion.Text = local.Calificacion.Puntaje.ToString("0.0");
             }
         }
     }

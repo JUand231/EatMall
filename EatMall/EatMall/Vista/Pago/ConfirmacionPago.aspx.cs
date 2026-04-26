@@ -1,6 +1,7 @@
 ﻿using EatMall.Logica;
 using EatMall.Modelo;
 using System;
+using System.Collections.Generic;
 
 namespace EatMall.Vista.Pago
 {
@@ -19,24 +20,17 @@ namespace EatMall.Vista.Pago
                     return;
                 }
 
-                // 1. Obtener el total del carrito
                 decimal total = carritoL.ObtenerTotal();
 
-                // 2. Si el carrito reporta 0, intentar recuperar de la Session (por si acaso)
                 if (total <= 0 && Session["Total"] != null)
-                {
                     total = Convert.ToDecimal(Session["Total"]);
-                }
 
-                // 3. Validar si realmente no hay nada que pagar
                 if (total <= 0)
                 {
-                    
                     lblTotal.Text = "Error: El carrito reporta 0";
                     return;
                 }
 
-                
                 CargarResumenPago(total);
             }
         }
@@ -47,7 +41,7 @@ namespace EatMall.Vista.Pago
             {
                 if (Session["MetodoPago"] == null)
                 {
-                    Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
+                    Response.Redirect("~/Vista/Pago/MetodosPago.aspx");
                     return;
                 }
 
@@ -55,33 +49,30 @@ namespace EatMall.Vista.Pago
                 int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
 
                 MetodoPagoL metodoL = new MetodoPagoL();
-                var metodos = metodoL.ObtenerMetodos(idLocal);
-                var seleccionado = metodos.Find(m => m.Id == idMetodo);
+
+                // ← Tipos explícitos para evitar ambigüedad con la página MetodoPago.aspx
+                List<EatMall.Modelo.MetodoPago> metodos = metodoL.ObtenerMetodos(idLocal);
+                EatMall.Modelo.MetodoPago seleccionado = metodos.Find(m => m.Id == idMetodo);
 
                 if (seleccionado != null)
                 {
                     lblMetodo.Text = seleccionado.NombreMetodo;
-
-                    
                     lblTotal.Text = total.ToString("C");
-
                     Session["Total"] = total;
                 }
                 else
                 {
-                    Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
+                    Response.Redirect("~/Vista/Pago/MetodosPago.aspx");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                
-                Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
+                Response.Redirect("~/Vista/Pago/MetodosPago.aspx");
             }
         }
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
-            // OBTENEMOS EL TOTAL ANTES DE VACIAR NADA
             decimal montoAPagar = carritoL.ObtenerTotal();
             if (montoAPagar <= 0 && Session["Total"] != null)
                 montoAPagar = Convert.ToDecimal(Session["Total"]);
@@ -94,24 +85,21 @@ namespace EatMall.Vista.Pago
                 FechaTransaccion = DateTime.Now
             };
 
-            // ID del pedido que deberías tener en Session
             int idPedido = Session["IdPedido"] != null ? Convert.ToInt32(Session["IdPedido"]) : 1;
 
             int idTransaccion = logica.ProcesarPago(oTransaccion, idPedido);
 
             if (idTransaccion > 0)
             {
-                // SOLO AQUÍ SE VACÍA EL CARRITO
                 carritoL.VaciarCarritoDespuesDePedido();
-
                 Session["IdTransaccion"] = idTransaccion;
                 Response.Redirect("~/Vista/Pago/Recibo.aspx");
             }
         }
+
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            // Redirige de vuelta al método de pago o al carrito si el usuario desiste
-            Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
+            Response.Redirect("~/Vista/Pago/MetodosPago.aspx");
         }
     }
 }

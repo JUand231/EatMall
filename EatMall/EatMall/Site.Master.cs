@@ -24,7 +24,7 @@ namespace EatMall.Vista
 				// Configuramos la visibilidad de los paneles
 				pnlLogin.Visible = false;
 				pnlRegistro.Visible = false; // Asegúrate de ocultar también el registro
-				pnlPerfil.Visible = true;
+				pnlBuscador.Visible = true;
 
 				// Mostramos el nombre del objeto Cliente
 				lblNombreUsuario.Text = oUsuario.Nombre;
@@ -33,7 +33,7 @@ namespace EatMall.Vista
 			{
 				pnlLogin.Visible = true;
 				pnlRegistro.Visible = true;
-				pnlPerfil.Visible = false;
+				pnlBuscador.Visible = true;
 			}
 		}
 

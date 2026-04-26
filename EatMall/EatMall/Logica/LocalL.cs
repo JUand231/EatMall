@@ -11,5 +11,10 @@ namespace EatMall.Logica
             LocalD oDatosL = new LocalD();
             return oDatosL.MtListarLocales(IdPlazoleta);
         }
+        public Local ObtenerLocalPorId(int id)
+        {
+            LocalD oDatosL = new LocalD();
+            return oDatosL.ObtenerLocalPorId(id);
+        }
     }
 }

@@ -15,7 +15,13 @@ namespace EatMall.Vista.Pago
         {
             if (!IsPostBack)
             {
-                string idCC = Request.QueryString["idCC"];
+                if (!string.IsNullOrEmpty(Request.QueryString["idCC"]))
+                    Session["IdCC"] = Request.QueryString["idCC"];
+
+                if (!string.IsNullOrEmpty(Request.QueryString["idPlazoleta"]))
+                    Session["IdPlazoleta"] = Request.QueryString["idPlazoleta"];
+
+                string idCC = Request.QueryString["idCC"] ?? Session["IdCC"]?.ToString();
 
                 btnVolverPlazoleta.NavigateUrl =
                     "~/Vista/Plazoleta/Plazoleta.aspx?id=" + idCC;
@@ -28,7 +34,10 @@ namespace EatMall.Vista.Pago
         {
             int idPlazoleta = 0;
 
-            int.TryParse(Request.QueryString["idPlazoleta"], out idPlazoleta);
+            if (!string.IsNullOrEmpty(Request.QueryString["idPlazoleta"]))
+                int.TryParse(Request.QueryString["idPlazoleta"], out idPlazoleta);
+            else if (Session["IdPlazoleta"] != null)
+                int.TryParse(Session["IdPlazoleta"].ToString(), out idPlazoleta);
 
             List<Modelo.Local> lista = localL.MtListarLocales(idPlazoleta);
 
@@ -41,13 +50,8 @@ namespace EatMall.Vista.Pago
             rptLocales.DataSource = lista;
             rptLocales.DataBind();
 
-            
             rptCarousel.DataSource = promocionL.MtListarPromocionesPorPlazoleta(idPlazoleta);
             rptCarousel.DataBind();
         }
-
-       
-        
     }
-             
 }

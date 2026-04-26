@@ -1,17 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Local.aspx.cs" Inherits="EatMall.Vista.Pago.Local" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Local.aspx.cs"
+    Inherits="EatMall.Vista.Pago.Local"
+    MasterPageFile="~/Site.Master" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Locales</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<asp:Content ID="Content1"
+    ContentPlaceHolderID="ContentPlaceHolder1"
+    runat="server">
 
     <style>
-        body {
-            background-color: #f0f2f5;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
         .local-card {
             background: white;
             border-radius: 16px;
@@ -23,10 +18,10 @@
             position: relative;
         }
 
-            .local-card:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-            }
+        .local-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
 
         .local-icono {
             width: 90px;
@@ -45,7 +40,7 @@
         }
 
         .btn-ver-menu {
-            background-color: #c0392b;
+            background-color: #F27F0D;
             color: white;
             border: none;
             border-radius: 8px;
@@ -54,12 +49,15 @@
             font-weight: 600;
             margin-top: 16px;
             transition: background 0.2s;
+            display: block;
+            text-decoration: none;
+            text-align: center;
         }
 
-            .btn-ver-menu:hover {
-                background-color: #a93226;
-                color: white;
-            }
+        .btn-ver-menu:hover {
+            background-color: #F27F0D;
+            color: white;
+        }
 
         .btn-cerrado {
             background-color: #e5e7eb;
@@ -71,17 +69,6 @@
             font-weight: 600;
             margin-top: 16px;
             cursor: not-allowed;
-        }
-
-        .page-title {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #1a1a1a;
-        }
-
-        .page-subtitle {
-            color: #6b7280;
-            margin-bottom: 32px;
         }
 
         .local-wrapper {
@@ -117,93 +104,137 @@
             font-weight: 600;
         }
     </style>
-</head>
 
-<body>
-    <form id="form1" runat="server">
-        <div class="container py-5">
+    <div class="container py-5">
 
-            <!-- Botón volver -->
-            <div class="mb-2">
-                <asp:HyperLink ID="btnVolverPlazoleta"
-                    runat="server"
-                    Text="← Volver"
-                    CssClass="btn btn-outline-dark btn-sm" />
-            </div>
-            <!-- CAROUSEL -->
-            <div id="carouselEatMall" class="carousel slide mb-5 shadow-lg" data-bs-ride="carousel" style="border-radius: 15px; overflow: hidden;">
-                <div class="carousel-inner">
-                    <asp:Repeater ID="rptCarousel" runat="server">
-                        <ItemTemplate>
-                            <div class="carousel-item <%# Container.ItemIndex == 0 ? "active" : "" %>">
-                                <div style="height: 320px; background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('<%# Eval("Imagen") %>'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
-                                    <div>
-                                        <span style="background-color: #c0392b; color: white; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Promoción</span>
-                                        <h2 class="fw-bold mt-2 mb-1" style="font-size: 2rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.5);"><%# Eval("Nombre") %></h2>
-                                        <p style="font-size: 1.3rem; font-weight: 600; color: #fbbf24;">$<%# Eval("Total", "{0:N0}") %></p>
-                                        <a href='<%# "/Vista/Local/Tienda.aspx?idLocal=" + Eval("IdLocal") + "&idPlazoleta=" + Eval("IdPlazoleta") + "&idCC=" + Request.QueryString["idCC"] %>'
-                                            style="display: inline-block; margin-top: 12px; background-color: #c0392b; color: white; padding: 10px 28px; border-radius: 25px; font-weight: 600; text-decoration: none;">Ver Promoción
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselEatMall" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselEatMall" data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </button>
-            </div>
+        <!-- Botón volver -->
+        <div class="mb-2">
+            <asp:HyperLink ID="btnVolverPlazoleta"
+                runat="server"
+                Text="← Volver"
+                CssClass="btn btn-outline-dark btn-sm" />
+        </div>
 
-            <!-- TITULO -->
-            <h4 class="mb-3 mt-2" style="font-weight: 700; color: #1a1a1a;">Locales</h4>
+        <!-- CAROUSEL -->
+        <div id="carouselEatMall"
+            class="carousel slide mb-5 shadow-lg"
+            data-bs-ride="carousel"
+            style="border-radius: 15px; overflow: hidden;">
 
-            <!-- LOCALES -->
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-                <asp:Repeater ID="rptLocales" runat="server">
+            <div class="carousel-inner">
+                <asp:Repeater ID="rptCarousel" runat="server">
                     <ItemTemplate>
-                        <div class="col">
-                            <div class="local-card">
+                        <div class="carousel-item <%# Container.ItemIndex == 0 ? "active" : "" %>">
+                            <div style="height: 320px;
+                                background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('<%# Eval("Imagen") %>');
+                                background-size: cover;
+                                background-position: center;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                text-align: center;
+                                color: white;">
 
-                                <div class="calificacion">
-                                    ★ <%# string.Format("{0:0.0}", Eval("Promedio")) %>
+                                <div>
+                                    <span style="background-color: #c0392b;
+                                        color: white;
+                                        padding: 4px 14px;
+                                        border-radius: 20px;
+                                        font-size: 0.8rem;
+                                        font-weight: 600;">
+                                        Promoción
+                                    </span>
+
+                                    <h2 class="fw-bold mt-2 mb-1">
+                                        <%# Eval("Nombre") %>
+                                    </h2>
+
+                                    <p style="font-size: 1.3rem;
+                                        font-weight: 600;
+                                        color: #fbbf24;">
+                                        $<%# Eval("Total", "{0:N0}") %>
+                                    </p>
+
+                                    <a href='<%# "/Vista/Local/Tienda.aspx?idLocal=" + Eval("IdLocal") + "&idPlazoleta=" + Eval("IdPlazoleta") + "&idCC=" + Request.QueryString["idCC"] %>'
+                                        style="display: inline-block;
+                                        margin-top: 12px;
+                                        background-color: #c0392b;
+                                        color: white;
+                                        padding: 10px 28px;
+                                        border-radius: 25px;
+                                        font-weight: 600;
+                                        text-decoration: none;">
+                                        Ver Promoción
+                                    </a>
                                 </div>
-
-                                <div class="local-wrapper">
-                                    <asp:Image ID="imgLocal"
-                                        runat="server"
-                                        ImageUrl='<%# string.IsNullOrEmpty(Eval("Imagen").ToString()) ? "~/img/default-local.png" : Eval("Imagen").ToString() %>'
-                                        CssClass="local-icono"
-                                        AlternateText='<%# Eval("Nombre") %>' />
-
-                                    <span class='estado-local <%# Eval("Estado").ToString() == "Abierto" ? "abierto" : "cerrado" %>'
-                                        title='<%# Eval("Estado") %>'></span>
-                                </div>
-
-                                <p class="local-nombre"><%# Eval("Nombre") %></p>
-
-                                <%# Eval("Estado").ToString() == "Abierto"
-                                    ? "<a href='/Vista/Local/Tienda.aspx?idLocal=" + Eval("Id") +
-                                      "&idPlazoleta=" + Request.QueryString["idPlazoleta"] +
-                                      "&idCC=" + Request.QueryString["idCC"] +
-                                      "' class='btn-ver-menu d-block text-decoration-none text-center'>Ver Menú</a>"
-                                    : "<button class='btn-cerrado' disabled>Cerrado</button>" %>
                             </div>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
 
-            <asp:Label ID="lblMensaje"
-                runat="server"
-                CssClass="mt-3 d-block alert alert-warning"
-                Visible="false" />
+            <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselEatMall"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
 
+            <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselEatMall"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
         </div>
-    </form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+
+        <!-- TITULO -->
+        <h4 class="mb-3 mt-2 fw-bold">Locales</h4>
+
+        <!-- LOCALES -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+            <asp:Repeater ID="rptLocales" runat="server">
+                <ItemTemplate>
+                    <div class="col">
+                        <div class="local-card">
+
+                            <div class="calificacion">
+                                ★ <%# string.Format("{0:0.0}", Convert.ToDouble(Eval("Promedio"))) %>
+                            </div>
+
+                            <div class="local-wrapper">
+                                <asp:Image ID="imgLocal"
+                                    runat="server"
+                                    ImageUrl='<%# string.IsNullOrEmpty(Eval("Imagen").ToString()) ? "~/img/default-local.png" : Eval("Imagen").ToString() %>'
+                                    CssClass="local-icono"
+                                    AlternateText='<%# Eval("Nombre") %>' />
+
+                                <span class='estado-local <%# Eval("Estado").ToString().Trim() == "Abierto" ? "abierto" : "cerrado" %>'>
+                                </span>
+                            </div>
+
+                            <p class="local-nombre">
+                                <%# Eval("Nombre") %>
+                            </p>
+
+                            <%# Eval("Estado").ToString().Trim() == "Abierto"
+                                ? "<a href='/Vista/Local/Tienda.aspx?idLocal=" + Eval("Id") +
+                                  "&idPlazoleta=" + Request.QueryString["idPlazoleta"] +
+                                  "&idCC=" + Request.QueryString["idCC"] +
+                                  "' class='btn-ver-menu'>Ver Menú</a>"
+                                : "<button class='btn-cerrado' disabled>Cerrado</button>" %>
+
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
+
+        <asp:Label ID="lblMensaje"
+            runat="server"
+            CssClass="mt-3 d-block alert alert-warning"
+            Visible="false" />
+
+    </div>
+
+</asp:Content>

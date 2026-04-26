@@ -9,8 +9,6 @@ namespace EatMall.Logica
 {
     public class BusquedaL
     {
-        private LoginD datos = new LoginD();
-
         public List<Producto> MtBuscarProductos(string Busqueda)
         {
             BusquedaD oBusquedaD = new BusquedaD();

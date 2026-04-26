@@ -15,9 +15,11 @@ namespace EatMall.Modelo
         public string Imagen { get; set; }
         public string Estado { get; set; }
         public double Promedio { get; set; }
+        public int IdPlazoleta { get; set; }
+        public int IdCC { get; set; }
+        public string HorarioLocal { get; set; }
         public Plazoleta Plazoleta { get; set; }
-
         public CentroComercial CentroComercial { get; set; }
-        public HorarioLocal HorarioLocal { get; set; }
+        public Calificacion Calificacion { get; set; }
     }
 }
