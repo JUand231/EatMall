@@ -1,5 +1,4 @@
-﻿
-using EatMall.Modelo;
+﻿using EatMall.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -48,27 +47,6 @@ namespace EatMall.Datos
             }
             return oCliente;
         }
-        public List<MetodoPago> ObtenerMetodos()
-        {
-            List<MetodoPago> lista = new List<MetodoPago>();
-            SqlConnection con = ConexionDB.MtAbrirConexion();
-
-            string query = "SELECT Id, NombreMetodo, Estado FROM MetodoPago WHERE Estado = 1";
-            SqlCommand cmd = new SqlCommand(query, con);
-
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                lista.Add(new MetodoPago
-                {
-                    Id = (int)reader["Id"],
-                    NombreMetodo = reader["NombreMetodo"].ToString(),
-                    Estado = (bool)reader["Estado"]
-                });
-            }
-            con.Close();
-            return lista;
-        }
+        
     }
 }

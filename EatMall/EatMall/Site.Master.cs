@@ -15,28 +15,33 @@ namespace EatMall.Vista
             if (Session["IdCliente"] != null)
             {
                 pnlLogin.Visible = false;
-                pnlPerfil.Visible = true;
+                liPerfil.Visible = true;
                 lblNombreUsuario.Text = Session["NombreCliente"].ToString();
             }
             else
             {
                 pnlLogin.Visible = true;
-                pnlPerfil.Visible = false;
+                liPerfil.Visible = false;
             }
         }
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtBusqueda.Text.Trim()))
+            
+            string termino = txtBusqueda.Text.Trim();
+
+            if (!string.IsNullOrEmpty(termino))
             {
-                // Redirige a la página de resultados pasando el término como querystring
-                Response.Redirect("/Vista/Busqueda/Resultados.aspx?q=" + Server.UrlEncode(txtBusqueda.Text.Trim()));
+                
+                Response.Redirect("/Vista/Busqueda/Resultados.aspx?q=" + Server.UrlEncode(termino));
             }
             else
             {
+                
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "warning",
-                    "Swal.fire({ icon: 'warning', title: 'Advertencia', text: 'Ingrese un término de búsqueda.' });", true);
+                    "Swal.fire({ icon: 'warning', title: '¿Qué deseas buscar?', text: 'Por favor ingresa el nombre de un local o producto.' });", true);
             }
         }
+        
 
         private void ActualizarBadgeCarrito()
         {

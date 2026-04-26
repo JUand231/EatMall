@@ -48,7 +48,7 @@ namespace EatMall.Vista.Pedido
             // --- ELIMINAMOS LAS LÍNEAS QUE VACÍAN EL CARRITO AQUÍ ---
             // El carrito se mantiene vivo hasta que el pago se apruebe.
 
-            Response.Redirect("~/Vista/Pago/MetodoPago.aspx");
+            Response.Redirect("~/Vista/Pago/MetodosPago.aspx");
         }
         
 

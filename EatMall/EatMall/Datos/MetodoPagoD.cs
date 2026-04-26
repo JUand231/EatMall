@@ -1,37 +1,39 @@
-﻿using EatMall.Modelo;
+﻿using EatMall.Modelo;          // ← debe estar exactamente así
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace EatMall.Datos
 {
     public class MetodoPagoD
     {
-        public List<MetodoPago> ObtenerMetodos(int idLocal)
+        public List<EatMall.Modelo.MetodoPago> ObtenerMetodos(int idLocal)  // ← nombre completo
         {
-            List<MetodoPago> lista = new List<MetodoPago>();
-            SqlConnection con = ConexionDB.MtAbrirConexion();
+            List<EatMall.Modelo.MetodoPago> lista = new List<EatMall.Modelo.MetodoPago>();
 
-            string query = "SELECT Id, NombreMetodo, Estado FROM MetodoPago WHERE Estado = 1 AND IdLocal = @idLocal";
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@idLocal", idLocal);
-
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            using (SqlConnection con = ConexionDB.MtAbrirConexion())
+            using (SqlCommand cmd = new SqlCommand(
+                "SELECT Id, NombreMetodo, Estado, Imagen FROM MetodoPago WHERE Estado = 1 AND IdLocal = @idLocal", con))
             {
-                lista.Add(new MetodoPago
+                cmd.Parameters.AddWithValue("@idLocal", idLocal);
+                con.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    Id = (int)reader["Id"],
-                    NombreMetodo = reader["NombreMetodo"].ToString(),
-                    Estado = (bool)reader["Estado"]
-                });
+                    while (reader.Read())
+                    {
+                        lista.Add(new EatMall.Modelo.MetodoPago  // ← nombre completo
+                        {
+                            Id = Convert.ToInt32(reader["Id"]),
+                            NombreMetodo = reader["NombreMetodo"].ToString(),
+                            Estado = Convert.ToBoolean(reader["Estado"]),
+                            Imagen = reader["Imagen"] == DBNull.Value ? "" : reader["Imagen"].ToString()
+                        });
+                    }
+                }
             }
-            con.Close();
+
             return lista;
         }
-
     }
 }
