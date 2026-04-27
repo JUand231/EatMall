@@ -13,26 +13,39 @@ namespace EatMall.Datos
 {
 	public class LoginD
 	{
-		public UsuarioLogin MtLogin(UsuarioLogin oDatosSesion, string tipoUsuario)
+		public UsuarioLogin MtLogin(UsuarioLogin oDatosSesion, bool esFuncionario)
 		{
 			UsuarioLogin oUsuario = null;
 			using (SqlConnection cn = ConexionDB.MtAbrirConexion())
 			{
 				cn.Open();
-				// Traemos IdRol de la tabla intermedia y Ruta de la tabla Menu
+
+				// Explicación de la consulta:
+				// Si esFuncionario es true, busca roles entre 1 y 4.
+				// Si esFuncionario es false, busca específicamente el rol 5 (Cliente).
 				string consulta = @"
-            SELECT U.Id, U.Nombre, U.Email, RU.IdRol, M.Ruta AS RutaInicio 
-            FROM Usuario U
-            INNER JOIN RolUsuario RU ON RU.IdUsuario = U.Id
-            INNER JOIN Rol R ON R.Id = RU.IdRol
-			INNER JOIN MenuRol MR ON MR.IdRol = R.Id
-            INNER JOIN Menu M ON R.Id = MR.IdMenu
-            WHERE U.Email = @Email AND U.Contraseña = @Clave";
+									SELECT TOP 1 
+										U.Id, 
+										U.Nombre, 
+										U.Email, 
+										RU.IdRol, 
+										M.Ruta AS RutaInicio 
+									FROM Usuario U
+									INNER JOIN RolUsuario RU ON RU.IdUsuario = U.Id
+									INNER JOIN MenuRol MR ON RU.IdRol = MR.IdRol
+									INNER JOIN Menu M ON MR.IdMenu = M.Id 
+									WHERE U.Email = @Email AND U.Contraseña = @Clave 
+									AND (
+										(@EsFunc = 1 AND RU.IdRol BETWEEN 1 AND 4) OR 
+										(@EsFunc = 0 AND RU.IdRol = 5)
+									)
+									ORDER BY RU.IdRol ASC"; // Prioriza el rol más alto (Admin sobre Cajero)
 
 				using (SqlCommand cmd = new SqlCommand(consulta, cn))
 				{
 					cmd.Parameters.AddWithValue("@Email", oDatosSesion.Email);
 					cmd.Parameters.AddWithValue("@Clave", oDatosSesion.Contraseña);
+					cmd.Parameters.AddWithValue("@EsFunc", esFuncionario ? 1 : 0);
 
 					using (SqlDataReader dr = cmd.ExecuteReader())
 					{
@@ -42,8 +55,7 @@ namespace EatMall.Datos
 							{
 								Id = Convert.ToInt32(dr["Id"]),
 								Nombre = dr["Nombre"].ToString(),
-								Rol = Convert.ToInt32(dr["IdRol"]),
-								TipoUsuario = tipoUsuario,
+								IdRol = Convert.ToInt32(dr["IdRol"]),
 								UrlInicio = dr["RutaInicio"].ToString()
 							};
 						}
@@ -51,29 +63,6 @@ namespace EatMall.Datos
 				}
 			}
 			return oUsuario;
-		}
-
-		public List<MetodoPago> ObtenerMetodos()
-		{
-			List<MetodoPago> lista = new List<MetodoPago>();
-			SqlConnection con = ConexionDB.MtAbrirConexion();
-
-			string query = "SELECT Id, NombreMetodo, Estado FROM MetodoPago WHERE Estado = 1";
-			SqlCommand cmd = new SqlCommand(query, con);
-
-			con.Open();
-			SqlDataReader reader = cmd.ExecuteReader();
-			while (reader.Read())
-			{
-				lista.Add(new MetodoPago
-				{
-					Id = (int)reader["Id"],
-					NombreMetodo = reader["NombreMetodo"].ToString(),
-					Estado = (bool)reader["Estado"]
-				});
-			}
-			con.Close();
-			return lista;
 		}
 	}
 }

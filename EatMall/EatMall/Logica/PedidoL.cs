@@ -19,7 +19,7 @@ namespace EatMall.Logica
                 Total = 0,
                 TipoEntrega = "Local",
                 IdCliente = idCliente,
-                //HoraEntrega = TimeSpan.Parse(horaEntrega)
+                HoraEntrega = TimeSpan.Parse(horaEntrega)
             };
 
             foreach (var item in carrito)
@@ -33,7 +33,7 @@ namespace EatMall.Logica
                 {
                     IdPedido = pedido.Id,
                     IdProducto = item.Id,
-                    IdLocal = item.idLocal,
+                    IdLocal = item.IdLocal,
                     Cantidad = item.Cantidad,
                     PrecioUnitario = item.Precio,
                     Subtotal = item.Subtotal

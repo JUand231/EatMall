@@ -14,7 +14,7 @@ namespace EatMall.Vista.Pago
         {
             if (!IsPostBack)
             {
-                if (Session["IdCliente"] == null)
+                if (Session["Usuario"] == null)
                 {
                     Response.Redirect("~/Vista/Auth/Login.aspx");
                     return;
@@ -47,6 +47,15 @@ namespace EatMall.Vista.Pago
 
                 int idMetodo = Convert.ToInt32(Session["MetodoPago"]);
                 int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
+
+                if (Session["HoraEntrega"] != null)
+                {
+                    lblHoraEntrega.Text = Session["HoraEntrega"].ToString();
+                }
+                else
+                {
+                    lblHoraEntrega.Text = "No especificada";
+                }
 
                 MetodoPagoL metodoL = new MetodoPagoL();
 

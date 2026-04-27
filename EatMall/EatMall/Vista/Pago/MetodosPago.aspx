@@ -353,7 +353,7 @@
                         onclick="procesarPago()" disabled="disabled">
                         <i class="fas fa-lock me-2"></i>Continuar con el pago
                     </button>
-                    <a href="/Vista/Pedido/ConfirmarPedido.aspx"
+                    <a href="/Vista/Pedido/Carritos.aspx"
                         class="btn btn-outline-secondary mt-2 w-100 d-block text-center"
                         style="padding: 14px 40px; font-size: 1.1rem; border-radius: 50px; font-weight: 600;">
                         <i class="fas fa-times me-2"></i>Cancelar
@@ -388,12 +388,19 @@
                             <span class="text-success">
                                 <asp:Label ID="lblEnvio" runat="server" /></span>
                         </div>
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="text-muted">Hora de entrega</span>
+                            <span>
+                                <asp:Label ID="lblHoraEntrega" runat="server" CssClass="fw-semibold" /></span>
+                        </div>
                         <hr />
                         <div class="d-flex justify-content-between">
                             <span class="fw-bold fs-5">Total</span>
                             <span class="total">
                                 <asp:Label ID="lblTotal" runat="server" /></span>
                         </div>
+
+
                         <div class="mt-4 p-3 bg-light rounded">
                             <small class="text-muted d-block">
                                 <i class="fas fa-map-marker-alt me-1 text-danger"></i>

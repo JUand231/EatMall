@@ -49,7 +49,7 @@
 
 
     <!-- Horario de Entrega -->
-    <%--<div class="card mb-3">
+    <div class="card mb-3">
     <div class="card-body">
         <h6 class="card-title">Programar Entrega</h6>
         <div class="form-group">
@@ -58,7 +58,7 @@
             </asp:DropDownList>
         </div>
     </div>
-</div>--%>
+</div>
 
     <!-- BOTONES -->
     <div class="d-flex gap-2">

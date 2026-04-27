@@ -229,41 +229,52 @@
             </div>
 
             <%-- Desglose de precios --%>
+            <%-- Desglose de precios (asegúrate de incluir la apertura del div) --%>
             <div class="desglose">
+
+                <div class="desglose-row">
+                    <span>Hora de entrega</span>
+                    <asp:Label ID="lblHoraEntrega" runat="server" CssClass="text-muted" Text="No especificada" />
+                </div>
+
                 <div class="desglose-row">
                     <span>Subtotal</span>
                     <asp:Label ID="lblSubtotal" runat="server" />
                 </div>
+
                 <div class="desglose-row">
                     <span>Domicilio</span>
-                    <asp:Label ID="lblDomicilio" runat="server" />
+                    <asp:Label ID="lblDomicilio" runat="server" Text="Gratis" />
                 </div>
+
                 <div class="desglose-row">
                     <span>Descuento</span>
-                    <asp:Label ID="lblDescuento" runat="server" Style="color: #1D9E75;" />
+                    <asp:Label ID="lblDescuento" runat="server" Text="$0.00" Style="color: #1D9E75;" />
                 </div>
+
                 <div class="desglose-row total-row">
                     <span>Total a pagar</span>
                     <asp:Label ID="lblTotal" runat="server" CssClass="total-amount" />
                 </div>
+
             </div>
 
-            <%-- Botones --%>
-            <asp:Button ID="btnConfirmar" runat="server"
-                Text="Confirmar pago"
-                CssClass="btn-confirmar"
-                OnClick="btnConfirmar_Click" />
+        <%-- Botones --%>
+        <asp:Button ID="btnConfirmar" runat="server"
+            Text="Confirmar pago"
+            CssClass="btn-confirmar"
+            OnClick="btnConfirmar_Click" />
 
-            <asp:Button ID="btnCancelar" runat="server"
-                Text="Cancelar"
-                CssClass="btn-cancelar"
-                OnClick="btnCancelar_Click" />
+        <asp:Button ID="btnCancelar" runat="server"
+            Text="Cancelar"
+            CssClass="btn-cancelar"
+            OnClick="btnCancelar_Click" />
 
-            <div class="seguro-note">
-                <div class="seguro-dot"></div>
-                Pago seguro y encriptado
+        <div class="seguro-note">
+            <div class="seguro-dot"></div>
+            Pago seguro y encriptado
    
-            </div>
+        </div>
 
         </div>
     </form>

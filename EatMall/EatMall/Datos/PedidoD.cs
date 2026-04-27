@@ -25,7 +25,7 @@ namespace EatMall.Datos
                     cmd.Parameters.AddWithValue("@Total", pedido.Total);
                     cmd.Parameters.AddWithValue("@TipoEntrega", pedido.TipoEntrega);
                     cmd.Parameters.AddWithValue("@IdCliente", pedido.IdCliente);
-                    //cmd.Parameters.AddWithValue("@HoraEntrega", pedido.HoraEntrega);
+                    cmd.Parameters.AddWithValue("@HoraEntrega", pedido.HoraEntrega);
 
                     idPedido = Convert.ToInt32(cmd.ExecuteScalar());
                 }
@@ -49,7 +49,8 @@ namespace EatMall.Datos
                     cmd.Parameters.AddWithValue("@Cantidad", detalle.Cantidad);
                     cmd.Parameters.AddWithValue("@PrecioUnitario", detalle.PrecioUnitario);
                     cmd.Parameters.AddWithValue("@Subtotal", detalle.Subtotal);
-                    cmd.ExecuteNonQuery();
+                   
+                  
                 }
             }
         }

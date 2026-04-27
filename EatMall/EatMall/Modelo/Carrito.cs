@@ -11,6 +11,7 @@ namespace EatMall.Modelo
         public string Nombre { get; set; }
         public decimal Precio { get; set; }
         public int Cantidad { get; set; }
-        public decimal Subtotal => Precio * Cantidad;        
+        public decimal Subtotal => Precio * Cantidad;    
+        public int IdLocal { get; set; }
     }
 }

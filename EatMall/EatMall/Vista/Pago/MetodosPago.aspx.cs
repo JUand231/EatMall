@@ -54,6 +54,7 @@ namespace EatMall.Vista.Pago
             lblSubtotal.Text = "$" + total.ToString("F2");
             lblEnvio.Text = envio == 0 ? "Gratis" : "$" + envio.ToString("F2");
             lblTotal.Text = "$" + total.ToString("F2");
+            lblHoraEntrega.Text = Session["HoraEntrega"]?.ToString() ?? "No seleccionada";
             lblDireccion.Text = Session["Direccion"]?.ToString() ?? "No especificada";
 
             // Mostrar código de pedido si ya fue generado
