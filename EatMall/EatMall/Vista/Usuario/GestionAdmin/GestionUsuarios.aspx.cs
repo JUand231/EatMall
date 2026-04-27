@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using EatMall.Datos;
+using System;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace EatMall.Vista.Usuario.GestionAdmin
 {
@@ -11,7 +8,60 @@ namespace EatMall.Vista.Usuario.GestionAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                CargarUsuarios(1);
+            }
+        }
 
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string busqueda = txtBusqueda.Text.Trim();
+
+            if (!string.IsNullOrEmpty(busqueda))
+            {
+                btnAnterior.Visible = false;
+                btnSiguiente.Visible = false;
+
+                BusquedaD datos = new BusquedaD();
+                gvUsuarios.DataSource = datos.MtBuscarUsuario(busqueda);
+                gvUsuarios.DataBind();
+            }
+            else
+            {
+                CargarUsuarios(1);
+
+                ScriptManager.RegisterStartupScript(
+                    this,
+                    this.GetType(), "warning",
+                    "Swal.fire({ icon: 'warning', title: 'Campo vacío', text: 'Ingresa un usuario para buscar.' });",
+                    true
+                );
+            }
+        }
+
+        private void CargarUsuarios(int pagina)
+        {
+            btnSiguiente.Visible = true;
+            btnAnterior.Visible = pagina > 1;
+
+            ClienteD datos = new ClienteD();
+            gvUsuarios.DataSource = datos.MtListarUsuarios(pagina, 25);
+            gvUsuarios.DataBind();
+
+            ViewState["PaginaActual"] = pagina;
+        }
+
+        protected void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            int pagina = Convert.ToInt32(ViewState["PaginaActual"]);
+            CargarUsuarios(pagina + 1);
+        }
+
+        protected void btnAnterior_Click(object sender, EventArgs e)
+        {
+            int pagina = Convert.ToInt32(ViewState["PaginaActual"]);
+            if (pagina > 1) CargarUsuarios(pagina - 1);
         }
     }
 }

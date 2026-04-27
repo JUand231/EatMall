@@ -29,5 +29,10 @@ namespace EatMall.Logica
             BusquedaD oBusquedaD = new BusquedaD();
             return oBusquedaD.MtBuscarCentroComercialPorNombre(Busqueda);
         }
+        public List<Cliente> MtBuscarUsuario(string Busqueda)
+        {
+            BusquedaD oBusquedaD = new BusquedaD();
+            return oBusquedaD.MtBuscarUsuario(Busqueda);
+        }
     }
 }

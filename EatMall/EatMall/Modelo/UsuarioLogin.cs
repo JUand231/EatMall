@@ -15,6 +15,5 @@ namespace EatMall.Modelo
         public string TipoUsuario { get; set; }
 
         public string UrlInicio { get; set; }
-        public List<Menu> Menus { get; set; }
     }
 }
