@@ -21,15 +21,15 @@ namespace EatMall.Datos
 				cn.Open();
 				// Traemos IdRol de la tabla intermedia y Ruta de la tabla Menu
 				string consulta = @"
-            SELECT U.Id, U.Nombre, U.Email, RU.IdRol, M.Ruta AS RutaInicio 
-            FROM Usuario U
-            INNER JOIN RolUsuario RU ON RU.IdUsuario = U.Id
-            INNER JOIN Rol R ON R.Id = RU.IdRol
-			INNER JOIN MenuRol MR ON MR.IdRol = R.Id
-            INNER JOIN Menu M ON R.Id = MR.IdMenu
-            WHERE U.Email = @Email AND U.Contraseña = @Clave";
+				SELECT U.Id, U.Nombre, U.Email, RU.IdRol, M.Ruta AS RutaInicio 
+				FROM Usuario U
+				INNER JOIN RolUsuario RU ON RU.IdUsuario = U.Id
+				INNER JOIN Rol R         ON R.Id = RU.IdRol
+				INNER JOIN MenuRol MR    ON MR.IdRol = R.Id
+				INNER JOIN Menu M        ON M.Id = MR.IdMenu 
+				WHERE U.Email = @Email AND U.Contraseña = @Clave";
 
-				using (SqlCommand cmd = new SqlCommand(consulta, cn))
+                using (SqlCommand cmd = new SqlCommand(consulta, cn))
 				{
 					cmd.Parameters.AddWithValue("@Email", oDatosSesion.Email);
 					cmd.Parameters.AddWithValue("@Clave", oDatosSesion.Contraseña);
