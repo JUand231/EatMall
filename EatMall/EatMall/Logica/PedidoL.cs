@@ -33,7 +33,7 @@ namespace EatMall.Logica
                 {
                     IdPedido = pedido.Id,
                     IdProducto = item.Id,
-                    IdLocal = 1,
+                    IdLocal = item.idLocal,
                     Cantidad = item.Cantidad,
                     PrecioUnitario = item.Precio,
                     Subtotal = item.Subtotal
