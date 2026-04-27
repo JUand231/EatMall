@@ -24,13 +24,13 @@ namespace EatMall.Datos
                                            P.Imagen,
                                            L.Id AS IdLocal,
                                            Pl.Id AS IdPlazoleta,
-                                           CC.Id as IdCC,
+                                           CC.Id AS IdCC,
                                            L.Nombre AS NombreLocal,
                                            CC.Nombre AS NombreCentroComercial
                                    FROM Producto P
                                    INNER JOIN Local  L ON P.IdLocal = L.Id
-                                   inner join Plazoleta Pl on Pl.Id = L.IdPlazoleta
-                                   inner join CentroComercial CC on Pl.IdCentroComercial = CC.Id
+                                   INNER JOIN Plazoleta Pl ON Pl.Id = L.IdPlazoleta
+                                   INNER JOIN CentroComercial CC on Pl.IdCentroComercial = CC.Id
                                    WHERE P.Nombre LIKE '%' + @Busqueda + '%'
                                    AND P.Estado = 1";
 
@@ -83,8 +83,8 @@ namespace EatMall.Datos
                                   l.Estado,
                                   l.Imagen,
                                   p.Nombre AS Plazoleta,
-                                  p.Id As IdPlazoleta,
-                                  cc.Id As IdCC,
+                                  p.Id AS IdPlazoleta,
+                                  cc.Id AS IdCC,
                                   cc.Nombre AS CentroComercial
                                   FROM Local l
                                   INNER JOIN Plazoleta p ON l.IdPlazoleta = p.Id

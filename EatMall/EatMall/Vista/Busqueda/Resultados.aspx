@@ -177,7 +177,7 @@
                                 <img src='<%# Eval("Imagen") %>' alt="Local" onerror="this.src='https://via.placeholder.com/220x150?text=Sin+imagen'" />
                                 <div class="card-body">
                                     <strong><%# Eval("Nombre") %></strong> <span><%# Eval("Descripcion") %></span>
-                                    <div class="card-meta">📍 <%# Eval("Plazoleta.Nombre") %> </div>
+                                    <div class="card-meta">🏷️ <%# Eval("Plazoleta.Nombre") %> </div>
                                     <div class="nombreCC">🏢<%# Eval("CentroComercial.Nombre") %></div>
                                     <span class="badge"><%# Eval("Estado") %></span>
                                 </div>
@@ -197,7 +197,7 @@
                                 <div class="card-body">
                                     <strong><%# Eval("Nombre") %></strong> <span><%# Eval("Descripcion") %></span>
                                     <div class="precio">$<%# Eval("Precio", "{0:N2}") %></div>
-                                    <div class="card-meta">📍 <%# Eval("Local.Nombre") %></div>
+                                    <div class="card-meta">♨️ <%# Eval("Local.Nombre") %></div>
                                     <div class="nombreCC">🏢 <%# Eval("CentroComercial.Nombre") %></div>
                                 </div>
                             </a>
@@ -215,7 +215,7 @@
                                 <img src='<%# Eval("Imagen") %>' alt="Centro Comercial" onerror="this.src='https://via.placeholder.com/220x150?text=Sin+imagen'" />
                                 <div class="card-body">
                                     <strong><%# Eval("Nombre") %></strong> <span><%# Eval("Descripcion") %></span>
-                                    <div class="card-meta">📍 <%# Eval("Direccion") %></div>
+                                    <div class="card-meta">📍 <%# Eval("Ubicacion") %></div>
                                     <div class="card-meta">🏙️ <%# Eval("Ciudad.NombreCiudad") %></div>
                                 </div>
                             </a>
