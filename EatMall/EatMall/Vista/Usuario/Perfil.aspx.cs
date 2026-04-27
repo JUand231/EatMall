@@ -10,7 +10,7 @@ namespace EatMall.Vista.Usuario
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["IdCliente"] == null)
+            if (Session["Usuario"] == null)
             {
                 Response.Redirect("~/Index.aspx");
                 return;
