@@ -1,5 +1,7 @@
-﻿using EatMall.Logica;
+﻿using EatMall.Datos;
+using EatMall.Logica;
 using EatMall.Modelo;
+using EatMall.Vista.Pago;
 using System;
 using System.Web.UI.WebControls;
 
@@ -10,6 +12,7 @@ namespace EatMall.Vista.Local
         private ProductoL productoL = new ProductoL();
         private CarritoL carritoL = new CarritoL();
         private LocalL localL = new LocalL();
+        private CategoriaProductoL categoriaL = new CategoriaProductoL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,16 +42,39 @@ namespace EatMall.Vista.Local
                     CargarInformacionLocal(idLocal);
                 }
 
-                CargarProductos();
+                CargarCategorias();
+
+                int idCategoria = 0;
+                int.TryParse(Request.QueryString["idCategoria"], out idCategoria);
+                CargarProductos(idCategoria);
             }
         }
 
-        private void CargarProductos()
+        private void CargarCategorias()
         {
             int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
+            rptCategorias.DataSource = categoriaL.ObtenerCategoriasPorLocal(idLocal);
+            rptCategorias.DataBind();
+        }
 
-            rptProductos.DataSource = productoL.ObtenerProductos(idLocal);
-            rptProductos.DataBind();
+        private void CargarProductos(int idCategoria = 0)
+        {
+            int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
+            if (idCategoria == 99)
+            {
+                var promociones = productoL.ObtenerPromocionesPorLocal(idLocal);
+                rptProductos.DataSource = promociones;
+                rptProductos.DataBind();
+            }
+            else
+            {
+
+                var productos = productoL.ObtenerProductos(idLocal);
+                if (idCategoria > 0)
+                    productos = productos.FindAll(p => p.IdCategoria == idCategoria);
+                rptProductos.DataSource = productos;
+                rptProductos.DataBind();
+            }
         }
 
         protected void rptProductos_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -59,26 +85,22 @@ namespace EatMall.Vista.Local
                 int idLocal = Session["IdLocal"] != null ? (int)Session["IdLocal"] : 0;
 
                 TextBox txtCantidad = (TextBox)e.Item.FindControl("txtCantidad");
-
                 int cantidad = 1;
-
-                if (txtCantidad != null &&
-                    int.TryParse(txtCantidad.Text, out int cant) &&
-                    cant > 0)
-                {
+                if (txtCantidad != null && int.TryParse(txtCantidad.Text, out int cant) && cant > 0)
                     cantidad = cant;
-                }
 
-                Producto producto =
-                    productoL.ObtenerProductos(idLocal)
-                    .Find(p => p.Id == idProducto);
+                int idCategoria = 0;
+                int.TryParse(Request.QueryString["idCategoria"], out idCategoria);
 
+                Producto producto = null;
+                if (idCategoria == 99)
+                    producto = productoL.ObtenerPromocionesPorLocal(idLocal).Find(p => p.Id == idProducto);
+                else
+                    producto = productoL.ObtenerProductos(idLocal).Find(p => p.Id == idProducto);
                 if (producto != null)
-                {
                     carritoL.AgregarProducto(producto, cantidad);
-                }
-
                 Response.Redirect(Request.RawUrl);
+
             }
         }
 
@@ -87,9 +109,7 @@ namespace EatMall.Vista.Local
             Modelo.Local local = localL.ObtenerLocalPorId(idLocal);
 
             if (local == null)
-            {
                 Response.Write("LOCAL NULL");
-            }
 
             if (local != null)
             {

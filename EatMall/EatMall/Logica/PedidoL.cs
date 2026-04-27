@@ -7,7 +7,7 @@ namespace EatMall.Logica
 {
     public class PedidoL
     {
-        public Pedido ConfirmarPedido(List<Carrito> carrito, int idCliente)
+        public Pedido ConfirmarPedido(List<Carrito> carrito, int idCliente, string horaEntrega)
         {
             PedidoD pedidoD = new PedidoD();
 
@@ -18,7 +18,8 @@ namespace EatMall.Logica
                 Estado = "Pendiente",
                 Total = 0,
                 TipoEntrega = "Local",
-                IdCliente = idCliente
+                IdCliente = idCliente,
+                //HoraEntrega = TimeSpan.Parse(horaEntrega)
             };
 
             foreach (var item in carrito)

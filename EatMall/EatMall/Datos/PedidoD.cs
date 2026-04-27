@@ -13,9 +13,9 @@ namespace EatMall.Datos
             using (SqlConnection cn = ConexionDB.MtAbrirConexion())
             {
                 cn.Open();
-                string query = @"INSERT INTO Pedido (CodigoPedido, FechaPedido, Estado, Total, TipoEntrega, IdCliente)
-                                 VALUES (@CodigoPedido, @FechaPedido, @Estado, @Total, @TipoEntrega, @IdCliente);
-                                 SELECT SCOPE_IDENTITY();";
+                string query = @"INSERT INTO Pedido (CodigoPedido, FechaPedido, Estado, Total, TipoEntrega, IdCliente, HoraEntrega)
+                         VALUES (@CodigoPedido, @FechaPedido, @Estado, @Total, @TipoEntrega, @IdCliente, @HoraEntrega);
+                         SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand cmd = new SqlCommand(query, cn))
                 {
@@ -25,6 +25,7 @@ namespace EatMall.Datos
                     cmd.Parameters.AddWithValue("@Total", pedido.Total);
                     cmd.Parameters.AddWithValue("@TipoEntrega", pedido.TipoEntrega);
                     cmd.Parameters.AddWithValue("@IdCliente", pedido.IdCliente);
+                    //cmd.Parameters.AddWithValue("@HoraEntrega", pedido.HoraEntrega);
 
                     idPedido = Convert.ToInt32(cmd.ExecuteScalar());
                 }

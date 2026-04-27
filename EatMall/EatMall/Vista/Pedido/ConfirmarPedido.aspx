@@ -47,6 +47,19 @@
         </div>
     </div>
 
+
+    <!-- Horario de Entrega -->
+    <%--<div class="card mb-3">
+    <div class="card-body">
+        <h6 class="card-title">Programar Entrega</h6>
+        <div class="form-group">
+            <label>Seleccione la hora de entrega:</label>
+            <asp:DropDownList ID="ddlHoraEntrega" runat="server" CssClass="form-control">
+            </asp:DropDownList>
+        </div>
+    </div>
+</div>--%>
+
     <!-- BOTONES -->
     <div class="d-flex gap-2">
         <asp:Button ID="btnVolver" runat="server" Text="← Volver"

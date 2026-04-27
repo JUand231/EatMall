@@ -141,6 +141,25 @@
 
     </div>
 
+    <!-- CATEGORÍAS -->
+<div class="d-flex gap-2 flex-wrap mb-3" id="barraCategorias">
+    <a href='?idLocal=<%= Request.QueryString["idLocal"] %>&idPlazoleta=<%= Request.QueryString["idPlazoleta"] %>&idCC=<%= Request.QueryString["idCC"] %>'
+        class='<%= string.IsNullOrEmpty(Request.QueryString["idCategoria"]) ? "btn btn-dark rounded-pill px-4" : "btn btn-outline-dark rounded-pill px-4" %>'>
+        Todos
+    </a>
+    <asp:Repeater ID="rptCategorias" runat="server">
+        <ItemTemplate>
+            <a href='<%# "?idLocal=" + Request.QueryString["idLocal"] + "&idPlazoleta=" + Request.QueryString["idPlazoleta"] + "&idCC=" + Request.QueryString["idCC"] + "&idCategoria=" + Eval("Id") %>'
+                class='<%# Request.QueryString["idCategoria"] == Eval("Id").ToString() ? "btn btn-dark rounded-pill px-4" : "btn btn-outline-dark rounded-pill px-4" %>'>
+                <%# Eval("Nombre") %>
+            </a>
+        </ItemTemplate>
+    </asp:Repeater>
+    <a href='?idLocal=<%= Request.QueryString["idLocal"] %>&idPlazoleta=<%= Request.QueryString["idPlazoleta"] %>&idCC=<%= Request.QueryString["idCC"] %>&idCategoria=99'
+        class='<%= Request.QueryString["idCategoria"] == "99" ? "btn btn-dark rounded-pill px-4" : "btn btn-outline-dark rounded-pill px-4" %>'>
+        Promociones
+    </a>
+</div>
 
     <!-- PRODUCTOS -->
     <div id="productosContainer" class="productos-container">
@@ -189,22 +208,24 @@
     </div>
 
     <script>
-        var sidebarVisible = true;
-
         window.onload = function () {
             var estado = sessionStorage.getItem('sidebarVisible');
 
             if (estado === 'false') {
                 document.getElementById('sidebarLocal').style.display = 'none';
                 document.getElementById('productosContainer').classList.add('sidebar-cerrado');
+                document.getElementById('barraCategorias').style.marginLeft = '20px';
                 document.getElementById('iconoSidebar').className = 'bi bi-layout-sidebar-inset';
                 document.querySelectorAll('.col-producto').forEach(function (col) {
                     col.className = 'col-md-3 col-producto mb-4';
                 });
                 sidebarVisible = false;
             } else {
+                sessionStorage.setItem('sidebarVisible', 'true');
+                document.getElementById('barraCategorias').style.marginLeft = '340px';
                 document.querySelectorAll('.col-producto').forEach(function (col) {
                     col.className = 'col-md-4 col-producto mb-4';
+
                 });
                 sidebarVisible = true;
             }
@@ -213,12 +234,14 @@
         function toggleSidebar() {
             var sidebar = document.getElementById('sidebarLocal');
             var container = document.getElementById('productosContainer');
+            var barra = document.getElementById('barraCategorias');
             var icono = document.getElementById('iconoSidebar');
             var cols = document.querySelectorAll('.col-producto');
 
             if (sidebarVisible) {
                 sidebar.style.display = 'none';
                 container.classList.add('sidebar-cerrado');
+                barra.style.marginLeft = '20px';
                 icono.className = 'bi bi-layout-sidebar-inset';
                 cols.forEach(function (col) {
                     col.className = 'col-md-3 col-producto mb-4';
@@ -227,6 +250,7 @@
             } else {
                 sidebar.style.display = 'block';
                 container.classList.remove('sidebar-cerrado');
+                barra.style.marginLeft = '340px';
                 icono.className = 'bi bi-layout-sidebar';
                 cols.forEach(function (col) {
                     col.className = 'col-md-4 col-producto mb-4';

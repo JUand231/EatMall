@@ -155,16 +155,17 @@
                                         $<%# Eval("Total", "{0:N0}") %>
                                     </p>
 
-                                    <a href='<%# "/Vista/Local/Tienda.aspx?idLocal=" + Eval("IdLocal") + "&idPlazoleta=" + Eval("IdPlazoleta") + "&idCC=" + Request.QueryString["idCC"] %>'
-                                        style="display: inline-block;
-                                        margin-top: 12px;
-                                        background-color: #c0392b;
-                                        color: white;
-                                        padding: 10px 28px;
-                                        border-radius: 25px;
-                                        font-weight: 600;
-                                        text-decoration: none;">
-                                        Ver Promoción
+                                   <a href='<%# "/Vista/Local/Tienda.aspx?idLocal=" + Eval("IdLocal") + "&idPlazoleta=" + Eval("IdPlazoleta") + "&idCC=" + Request.QueryString["idCC"] + "&idCategoria=99" %>'
+                                    style="display: inline-block;
+                                    margin-top: 12px;
+                                    background-color: #F27F0D;
+                                    color: white;
+                                    padding: 10px 28px;
+                                    border-radius: 25px;
+                                    font-weight: 600;
+                                    text-decoration: none;">
+                                    Ver Promoción
+                                    </a>
                                     </a>
                                 </div>
                             </div>

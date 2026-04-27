@@ -32,7 +32,8 @@ namespace EatMall.Datos
                                 Descripcion = dr["Descripcion"].ToString(),
                                 Imagen = dr["Imagen"].ToString(),
                                 Precio = Convert.ToDecimal(dr["Precio"]),
-                                Estado = Convert.ToBoolean(dr["Estado"]),
+                                Estado = Convert.ToInt32(dr["Estado"]) == 1,
+                                IdCategoria = Convert.ToInt32(dr["IdCategoria"]),
                                 Local = new Local()
                                 {
                                     Id = Convert.ToInt32(dr["IdLocal"])
@@ -43,6 +44,38 @@ namespace EatMall.Datos
                 }
             }
 
+            return lista;
+        }
+        public List<Producto> ObtenerPromocionesPorLocal(int idLocal)
+        {
+            List<Producto> lista = new List<Producto>();
+            using (SqlConnection cn = ConexionDB.MtAbrirConexion())
+            {
+                cn.Open();
+                string query = @"SELECT Id, Nombre, Imagen, Total AS Precio
+                         FROM dbo.Promocion
+                         WHERE IdLocal = @IdLocal";
+                using (SqlCommand cmd = new SqlCommand(query, cn))
+                {
+                    
+                    cmd.Parameters.AddWithValue("@IdLocal", idLocal);
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new Producto()
+                            {
+                                Id = Convert.ToInt32(dr["Id"]),
+                                Nombre = dr["Nombre"].ToString(),                               
+                                Imagen = dr["Imagen"].ToString(),
+                                Precio = Convert.ToDecimal(dr["Precio"]),
+                                Descripcion = "Promoción",
+                                IdCategoria = 8
+                            });
+                        }
+                    }
+                }
+            }
             return lista;
         }
     }

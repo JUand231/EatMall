@@ -16,6 +16,7 @@ namespace EatMall.Modelo
         public int IdPlazoleta { get; set; }
         public int IdCC { get; set; }
         public Local Local { get; set; }
+        public int IdCategoria { get; set; }
         public CentroComercial CentroComercial { get; set; }
 
 

@@ -1,9 +1,10 @@
-﻿using EatMall.Datos;
-using EatMall.Modelo;
+﻿using EatMall.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using EatMall.Datos;
+
 
 namespace EatMall.Logica
 {

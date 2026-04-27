@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\BusquedaD.cs" />
+    <Compile Include="Datos\CategoriaProductoD.cs" />
     <Compile Include="Datos\CentroComercialD.cs" />
     <Compile Include="Datos\ClienteD.cs" />
     <Compile Include="Datos\ConexionDB.cs" />
@@ -160,6 +161,7 @@
     </Compile>
     <Compile Include="Logica\BusquedaL.cs" />
     <Compile Include="Logica\CarritoL.cs" />
+    <Compile Include="Logica\CategoriaProductoL.cs" />
     <Compile Include="Logica\CentroComercialL.cs" />
     <Compile Include="Logica\ClienteL.cs" />
     <Compile Include="Logica\DetallePedidoL.cs" />
@@ -174,6 +176,7 @@
     <Compile Include="Logica\TransaccionL.cs" />
     <Compile Include="Modelo\Calificacion.cs" />
     <Compile Include="Modelo\Carrito.cs" />
+    <Compile Include="Modelo\CategoriaProducto.cs" />
     <Compile Include="Modelo\CentroComercial.cs" />
     <Compile Include="Modelo\Ciudad.cs" />
     <Compile Include="Modelo\Cliente.cs" />

@@ -11,5 +11,13 @@ namespace EatMall.Logica
             ProductoD datos = new ProductoD();
             return datos.ObtenerProductos(idLocal);
         }
+
+        public List<Producto> ObtenerPromocionesPorLocal(int idLocal)
+        {
+
+            return new ProductoD().ObtenerPromocionesPorLocal(idLocal); 
+        }
     }
+
+
 }

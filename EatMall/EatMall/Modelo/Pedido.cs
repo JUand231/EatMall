@@ -11,5 +11,7 @@ namespace EatMall.Modelo
         public decimal Total { get; set; }
         public string TipoEntrega { get; set; }
         public int IdCliente { get; set; }
+
+        //public TimeSpan HoraEntrega { get; set; }
     }
 }
