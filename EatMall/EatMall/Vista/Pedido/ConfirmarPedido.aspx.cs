@@ -5,62 +5,72 @@ using System.Collections.Generic;
 
 namespace EatMall.Vista.Pedido
 {
-    public partial class ConfirmarPedido : System.Web.UI.Page
-    {
-        private CarritoL carritoL = new CarritoL();
-        private PedidoL pedidoL = new PedidoL();
+	public partial class ConfirmarPedido : System.Web.UI.Page
+	{
+		private CarritoL carritoL = new CarritoL();
+		private PedidoL pedidoL = new PedidoL();
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (Session["IdCliente"] == null)
-                Response.Redirect("~/Vista/Auth/Login.aspx");
+		protected void Page_Load(object sender, EventArgs e)
+		{
+			UsuarioLogin oUser = (UsuarioLogin)Session["Usuario"];
 
-            if (!IsPostBack)
-            {
-                List<Carrito> carrito = carritoL.ObtenerCarrito();
+			if (oUser == null)
+			{
+				Response.Redirect("~/Vista/Auth/Login.aspx");
+				return;
+			}
 
-                if (carrito.Count == 0)
-                    Response.Redirect("~/Index.aspx");
+			if (!IsPostBack)
+			{
+				List<Carrito> carrito = carritoL.ObtenerCarrito();
 
-                lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-                rptResumen.DataSource = carrito;
-                rptResumen.DataBind();
-                lblTotal.Text = carritoL.ObtenerTotal().ToString("N2");
-            }
-        }
+				if (carrito.Count == 0)
+					Response.Redirect("~/Index.aspx");
 
-        protected void btnConfirmar_Click(object sender, EventArgs e)
-        {
-            int idCliente = Convert.ToInt32(Session["IdCliente"]);
-            List<Carrito> carrito = carritoL.ObtenerCarrito();
+				lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+				rptResumen.DataSource = carrito;
+				rptResumen.DataBind();
+				lblTotal.Text = carritoL.ObtenerTotal().ToString("N2");
+			}
+		}
 
-            // 1. Guardamos el total para la siguiente pantalla
-            decimal total = carritoL.ObtenerTotal();
-            Session["Total"] = total.ToString("N2");
+		protected void btnConfirmar_Click(object sender, EventArgs e)
+		{
+			if (Session["Usuario"] == null)
+			{
+				Response.Redirect("~/Vista/Auth/Login.aspx");
+				return;
+			}
 
-            // 2. Creamos el registro del pedido en la base de datos
-            Modelo.Pedido pedido = pedidoL.ConfirmarPedido(carrito, idCliente);
+			// EXTRAER EL ID CORRECTAMENTE
+			// Usamos el objeto UsuarioLogin que guardamos en el Login
+			UsuarioLogin oUser = (UsuarioLogin)Session["Usuario"];
+			int idCliente = oUser.Id;
 
-            // 3. Guardamos datos del pedido para usarlos en el pago y el recibo
-            Session["CodigoPedido"] = pedido.CodigoPedido;
-            Session["IdPedido"] = pedido.Id; // Muy importante para la transacción
+			List<Carrito> carrito = carritoL.ObtenerCarrito();
 
-            // --- ELIMINAMOS LAS LÍNEAS QUE VACÍAN EL CARRITO AQUÍ ---
-            // El carrito se mantiene vivo hasta que el pago se apruebe.
+			// ... resto de tu lógica de pedido ...
+			decimal total = carritoL.ObtenerTotal();
+			Session["Total"] = total.ToString("N2");
 
-            Response.Redirect("~/Vista/Pago/MetodosPago.aspx");
-        }
-        
+			Modelo.Pedido pedido = pedidoL.ConfirmarPedido(carrito, idCliente);
 
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            // No elimina el carrito, solo vuelve a la tienda
-            Response.Redirect("~/Vista/Local/Tienda.aspx");
-        }
+			Session["CodigoPedido"] = pedido.CodigoPedido;
+			Session["IdPedido"] = pedido.Id;
 
-        protected void btnVolver_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Vista/Local/Tienda.aspx");
-        }
-    }
+			Response.Redirect("~/Vista/Pago/MetodosPago.aspx");
+		}
+
+
+		protected void btnCancelar_Click(object sender, EventArgs e)
+		{
+			// No elimina el carrito, solo vuelve a la tienda
+			Response.Redirect("~/Vista/Local/Tienda.aspx");
+		}
+
+		protected void btnVolver_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("~/Vista/Local/Tienda.aspx");
+		}
+	}
 }

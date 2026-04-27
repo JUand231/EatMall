@@ -25,6 +25,7 @@ namespace EatMall.Vista
 				pnlLogin.Visible = false;
 				pnlRegistro.Visible = false; // Asegúrate de ocultar también el registro
 				pnlBuscador.Visible = true;
+				liPerfil.Visible = true;
 
 				// Mostramos el nombre del objeto Cliente
 				lblNombreUsuario.Text = oUsuario.Nombre;
@@ -34,6 +35,7 @@ namespace EatMall.Vista
 				pnlLogin.Visible = true;
 				pnlRegistro.Visible = true;
 				pnlBuscador.Visible = true;
+				liPerfil.Visible = false;
 			}
 		}
 

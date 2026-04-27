@@ -14,7 +14,7 @@ namespace EatMall.Vista.Pago
         {
             if (!IsPostBack)
             {
-                if (Session["IdCliente"] == null)
+                if (Session["Usuario"] == null)
                 {
                     Response.Redirect("~/Vista/Auth/Login.aspx");
                     return;

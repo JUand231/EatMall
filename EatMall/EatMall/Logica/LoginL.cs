@@ -9,11 +9,10 @@ namespace EatMall.Logica
 {
 	public class LoginL
 	{
-		public UsuarioLogin MtLogin(UsuarioLogin oDatosSesion, string tipoUsuario)
+		public UsuarioLogin MtLogin(UsuarioLogin oDatos, bool esFuncionario)
 		{
 			LoginD oLoginD = new LoginD();
-			return oLoginD.MtLogin(oDatosSesion, tipoUsuario);
-
+			return oLoginD.MtLogin(oDatos, esFuncionario);
 		}
 	}
 }

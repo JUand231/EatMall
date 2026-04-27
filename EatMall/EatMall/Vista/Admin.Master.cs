@@ -12,32 +12,40 @@ namespace EatMall.Vista
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (Session["Usuario"] != null)
+			if (!IsPostBack)
 			{
-				UsuarioLogin oUsuario = (UsuarioLogin)Session["Usuario"];
-
-				// Roles del 1 al 4 son funcionarios
-				if (oUsuario.Rol >= 1 && oUsuario.Rol <= 4)
+				if (Session["Usuario"] != null)
 				{
-					string nombreRol = "";
-					switch (oUsuario.Rol)
+					UsuarioLogin oUsuario = (UsuarioLogin)Session["Usuario"];
+
+					// Agregamos un log para depurar (puedes verlo en la consola de salida)
+					System.Diagnostics.Debug.WriteLine("Rol detectado: " + oUsuario.IdRol);
+
+					// Verificamos que sea un funcionario (1 al 4)
+					if (oUsuario.IdRol >= 1 && oUsuario.IdRol <= 4)
 					{
-						case 1: nombreRol = "Admin General"; break;
-						case 2: nombreRol = "Admin CC"; break;
-						case 3: nombreRol = "Admin Local"; break;
-						case 4: nombreRol = "Cajero"; break;
+						string nombreRol = "";
+						switch (oUsuario.IdRol)
+						{
+							case 1: nombreRol = "Admin General"; break;
+							case 2: nombreRol = "Admin CC"; break;
+							case 3: nombreRol = "Admin Local"; break;
+							case 4: nombreRol = "Cajero"; break;
+						}
+						// Asegúrate de que lblUsuario existe en tu Admin.Master
+						lblUsuario.Text = $"{oUsuario.Nombre} ({nombreRol})";
 					}
-					lblUsuario.Text = $"{oUsuario.Nombre} ({nombreRol})";
+					else
+					{
+						// Si es Rol 5 (Cliente), lo sacamos de la zona administrativa
+						Response.Redirect("~/Index.aspx");
+					}
 				}
 				else
 				{
-					// El Rol 5 (Cliente) no entra aquí
-					Response.Redirect("~/Index.aspx");
+					// Si no hay sesión, al login
+					Response.Redirect("~/Vista/Auth/Login.aspx");
 				}
-			}
-			else
-			{
-				Response.Redirect("~/Vista/Auth/Login.aspx");
 			}
 		}
 

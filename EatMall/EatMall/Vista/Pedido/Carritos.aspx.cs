@@ -48,7 +48,7 @@ namespace EatMall.Vista.Pedido
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (Session["IdCliente"] == null)
+            if (Session["Usuario"] == null)
             {
                 
                 string urlRetorno = Request.Url.PathAndQuery;
