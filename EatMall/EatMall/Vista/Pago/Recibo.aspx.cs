@@ -24,7 +24,7 @@ namespace EatMall.Vista.Pago
 
         protected void btnInicio_Click(object sender, EventArgs e)
         {
-            var idCliente = Session["IdCliente"];
+            var idCliente = Session["Usuario"];
             var nombreCliente = Session["NombreCliente"];
 
             // Limpiar solo los datos del pedido
@@ -39,7 +39,7 @@ namespace EatMall.Vista.Pago
             Session.Remove("IdCC");
 
             // Restaurar datos del usuario
-            Session["IdCliente"] = idCliente;
+            Session["Usuario"] = idCliente;
             Session["NombreCliente"] = nombreCliente;
             
             Response.Redirect("~/Index.aspx");

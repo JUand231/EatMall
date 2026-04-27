@@ -12,7 +12,7 @@ namespace EatMall.Vista.Pedido
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["IdCliente"] == null)
+            if (Session["Usuario"] == null)
                 Response.Redirect("~/Vista/Auth/Login.aspx");
 
             if (!IsPostBack)
@@ -31,7 +31,7 @@ namespace EatMall.Vista.Pedido
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
-            int idCliente = Convert.ToInt32(Session["IdCliente"]);
+            int idCliente = Convert.ToInt32(Session["Usuario"]);
             List<Carrito> carrito = carritoL.ObtenerCarrito();
 
             // 1. Guardamos el total para la siguiente pantalla
